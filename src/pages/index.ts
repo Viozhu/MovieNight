@@ -1,3 +1,3 @@
 export { default as Favorites } from "./Favorites";
 export { default as Home } from "./Home";
-export { default as usePageCharacters } from "./usePageCharacters";
+export { default as usePageCharacters } from "./Home/graphql/queries/usePopularMovies";

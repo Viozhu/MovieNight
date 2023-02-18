@@ -1,10 +1,10 @@
 import { useState } from "react";
-import UsePageCharacters from "../usePageCharacters";
+import UsePopularMovies from "./graphql/queries/usePopularMovies";
 
 const Home = () => {
   const [count, setCount] = useState(0);
 
-  const { status, data } = UsePageCharacters({
+  const { status, data, error, refectch } = UsePopularMovies({
     variables: { page: count + 1 },
   });
 

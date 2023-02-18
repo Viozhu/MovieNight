@@ -1,0 +1,22 @@
+query popularMovies {
+  popularMovies {
+    id
+    poster_path
+    title
+    vote_average
+    runtime
+    production_companies {
+      name
+      logo_path
+      origin_country
+    }
+    overview
+    videos {
+      results {
+        site
+        key
+        type
+      }
+    }
+  }
+}

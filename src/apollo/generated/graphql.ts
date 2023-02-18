@@ -30,259 +30,287 @@ export enum CacheControlScope {
   Public = 'PUBLIC'
 }
 
-export type Character = {
-  __typename?: 'Character';
-  /** Time at which the character was created in the database. */
-  created?: Maybe<Scalars['String']>;
-  /** Episodes in which this character appeared. */
-  episode: Array<Maybe<Episode>>;
-  /** The gender of the character ('Female', 'Male', 'Genderless' or 'unknown'). */
-  gender?: Maybe<Scalars['String']>;
-  /** The id of the character. */
-  id?: Maybe<Scalars['ID']>;
-  /**
-   * Link to the character's image.
-   * All images are 300x300px and most are medium shots or portraits since they are intended to be used as avatars.
-   */
-  image?: Maybe<Scalars['String']>;
-  /** The character's last known location */
-  location?: Maybe<Location>;
-  /** The name of the character. */
+export type CastDetail = {
+  __typename?: 'CastDetail';
+  character?: Maybe<Scalars['String']>;
+  id: Scalars['Int'];
   name?: Maybe<Scalars['String']>;
-  /** The character's origin location */
-  origin?: Maybe<Location>;
-  /** The species of the character. */
-  species?: Maybe<Scalars['String']>;
-  /** The status of the character ('Alive', 'Dead' or 'unknown'). */
-  status?: Maybe<Scalars['String']>;
-  /** The type or subspecies of the character. */
-  type?: Maybe<Scalars['String']>;
+  poster_path?: Maybe<Scalars['String']>;
+  title?: Maybe<Scalars['String']>;
 };
 
-export type Characters = {
-  __typename?: 'Characters';
-  info?: Maybe<Info>;
-  results?: Maybe<Array<Maybe<Character>>>;
+export type Company = {
+  __typename?: 'Company';
+  id: Scalars['Int'];
+  logo_path?: Maybe<Scalars['String']>;
+  name: Scalars['String'];
+  origin_country?: Maybe<Scalars['String']>;
+};
+
+export type Configurations = {
+  __typename?: 'Configurations';
+  change_keys?: Maybe<Array<Maybe<Scalars['String']>>>;
+  images?: Maybe<ImageConfigurations>;
+};
+
+export type CreditCast = {
+  __typename?: 'CreditCast';
+  character?: Maybe<Scalars['String']>;
+  id: Scalars['Int'];
+  name?: Maybe<Scalars['String']>;
+  profile_path?: Maybe<Scalars['String']>;
+};
+
+export type CreditCrew = {
+  __typename?: 'CreditCrew';
+  department?: Maybe<Scalars['String']>;
+  id: Scalars['Int'];
+  name?: Maybe<Scalars['String']>;
+  profile_path?: Maybe<Scalars['String']>;
+};
+
+export type Credits = {
+  __typename?: 'Credits';
+  cast?: Maybe<Array<Maybe<CreditCast>>>;
+  crew?: Maybe<Array<Maybe<CreditCrew>>>;
+};
+
+export type CrewDetail = {
+  __typename?: 'CrewDetail';
+  department?: Maybe<Scalars['String']>;
+  id: Scalars['Int'];
+  job?: Maybe<Scalars['String']>;
+  original_name?: Maybe<Scalars['String']>;
+  original_title?: Maybe<Scalars['String']>;
+  poster_path?: Maybe<Scalars['String']>;
 };
 
 export type Episode = {
   __typename?: 'Episode';
-  /** The air date of the episode. */
   air_date?: Maybe<Scalars['String']>;
-  /** List of characters who have been seen in the episode. */
-  characters: Array<Maybe<Character>>;
-  /** Time at which the episode was created in the database. */
-  created?: Maybe<Scalars['String']>;
-  /** The code of the episode. */
-  episode?: Maybe<Scalars['String']>;
-  /** The id of the episode. */
-  id?: Maybe<Scalars['ID']>;
-  /** The name of the episode. */
-  name?: Maybe<Scalars['String']>;
+  episode_number?: Maybe<Scalars['Int']>;
+  id: Scalars['Int'];
+  name: Scalars['String'];
+  overview?: Maybe<Scalars['String']>;
+  season_number?: Maybe<Scalars['Int']>;
+  show_id: Scalars['Int'];
+  vote_average: Scalars['Float'];
 };
 
-export type Episodes = {
-  __typename?: 'Episodes';
-  info?: Maybe<Info>;
-  results?: Maybe<Array<Maybe<Episode>>>;
+export type Genres = {
+  __typename?: 'Genres';
+  id: Scalars['Int'];
+  name: Scalars['String'];
 };
 
-export type FilterCharacter = {
-  gender?: InputMaybe<Scalars['String']>;
-  name?: InputMaybe<Scalars['String']>;
-  species?: InputMaybe<Scalars['String']>;
-  status?: InputMaybe<Scalars['String']>;
-  type?: InputMaybe<Scalars['String']>;
+export type ImageConfigurations = {
+  __typename?: 'ImageConfigurations';
+  backdrop_sizes?: Maybe<Array<Maybe<Scalars['String']>>>;
+  base_url: Scalars['String'];
+  logo_sizes?: Maybe<Array<Maybe<Scalars['String']>>>;
+  poster_sizes?: Maybe<Array<Maybe<Scalars['String']>>>;
+  profile_sizes?: Maybe<Array<Maybe<Scalars['String']>>>;
+  secure_base_url: Scalars['String'];
+  still_sizes?: Maybe<Array<Maybe<Scalars['String']>>>;
 };
 
-export type FilterEpisode = {
-  episode?: InputMaybe<Scalars['String']>;
-  name?: InputMaybe<Scalars['String']>;
+export type Movie = {
+  __typename?: 'Movie';
+  backdrop_path?: Maybe<Scalars['String']>;
+  credits?: Maybe<Credits>;
+  genres?: Maybe<Array<Maybe<Genres>>>;
+  id: Scalars['Int'];
+  imdb_id?: Maybe<Scalars['String']>;
+  overview?: Maybe<Scalars['String']>;
+  poster_path?: Maybe<Scalars['String']>;
+  production_companies?: Maybe<Array<Maybe<Company>>>;
+  release_date?: Maybe<Scalars['String']>;
+  runtime?: Maybe<Scalars['Int']>;
+  title: Scalars['String'];
+  videos?: Maybe<VideoResults>;
+  vote_average: Scalars['Float'];
 };
 
-export type FilterLocation = {
-  dimension?: InputMaybe<Scalars['String']>;
-  name?: InputMaybe<Scalars['String']>;
-  type?: InputMaybe<Scalars['String']>;
+export type Person = {
+  __typename?: 'Person';
+  also_known_as?: Maybe<Array<Maybe<Scalars['String']>>>;
+  biography?: Maybe<Scalars['String']>;
+  birthday?: Maybe<Scalars['String']>;
+  deathday?: Maybe<Scalars['String']>;
+  id: Scalars['Int'];
+  imdb_id?: Maybe<Scalars['String']>;
+  movie_credits?: Maybe<PersonCredits>;
+  name: Scalars['String'];
+  profile_path?: Maybe<Scalars['String']>;
+  tv_credits?: Maybe<PersonCredits>;
 };
 
-export type Info = {
-  __typename?: 'Info';
-  /** The length of the response. */
-  count?: Maybe<Scalars['Int']>;
-  /** Number of the next page (if it exists) */
-  next?: Maybe<Scalars['Int']>;
-  /** The amount of pages. */
-  pages?: Maybe<Scalars['Int']>;
-  /** Number of the previous page (if it exists) */
-  prev?: Maybe<Scalars['Int']>;
-};
-
-export type Location = {
-  __typename?: 'Location';
-  /** Time at which the location was created in the database. */
-  created?: Maybe<Scalars['String']>;
-  /** The dimension in which the location is located. */
-  dimension?: Maybe<Scalars['String']>;
-  /** The id of the location. */
-  id?: Maybe<Scalars['ID']>;
-  /** The name of the location. */
-  name?: Maybe<Scalars['String']>;
-  /** List of characters who have been last seen in the location. */
-  residents: Array<Maybe<Character>>;
-  /** The type of the location. */
-  type?: Maybe<Scalars['String']>;
-};
-
-export type Locations = {
-  __typename?: 'Locations';
-  info?: Maybe<Info>;
-  results?: Maybe<Array<Maybe<Location>>>;
+export type PersonCredits = {
+  __typename?: 'PersonCredits';
+  cast?: Maybe<Array<Maybe<CastDetail>>>;
+  crew?: Maybe<Array<Maybe<CrewDetail>>>;
 };
 
 export type Query = {
   __typename?: 'Query';
-  /** Get a specific character by ID */
-  character?: Maybe<Character>;
-  /** Get the list of all characters */
-  characters?: Maybe<Characters>;
-  /** Get a list of characters selected by ids */
-  charactersByIds?: Maybe<Array<Maybe<Character>>>;
-  /** Get a specific episode by ID */
-  episode?: Maybe<Episode>;
-  /** Get the list of all episodes */
-  episodes?: Maybe<Episodes>;
-  /** Get a list of episodes selected by ids */
-  episodesByIds?: Maybe<Array<Maybe<Episode>>>;
-  /** Get a specific locations by ID */
-  location?: Maybe<Location>;
-  /** Get the list of all locations */
-  locations?: Maybe<Locations>;
-  /** Get a list of locations selected by ids */
-  locationsByIds?: Maybe<Array<Maybe<Location>>>;
+  airingTodayShows: Array<Maybe<Show>>;
+  configurations?: Maybe<Configurations>;
+  episodeDetail?: Maybe<Episode>;
+  movieDetail?: Maybe<Movie>;
+  nowPlayingMovies: Array<Maybe<Movie>>;
+  personDetail?: Maybe<Person>;
+  popularMovies: Array<Maybe<Movie>>;
+  popularShows: Array<Maybe<Show>>;
+  searchMovie?: Maybe<Array<Maybe<Movie>>>;
+  searchPerson?: Maybe<Array<Maybe<Person>>>;
+  searchShow?: Maybe<Array<Maybe<Show>>>;
+  seasonDetail?: Maybe<Season>;
+  showDetail?: Maybe<Show>;
+  similarMovies?: Maybe<Array<Maybe<Movie>>>;
+  similarShows?: Maybe<Array<Maybe<Show>>>;
+  topRatedShows: Array<Maybe<Show>>;
+  upcomingMovies: Array<Maybe<Movie>>;
 };
 
 
-export type QueryCharacterArgs = {
-  id: Scalars['ID'];
+export type QueryEpisodeDetailArgs = {
+  episodeNumber: Scalars['Int'];
+  seasonNumber: Scalars['Int'];
+  showId: Scalars['Int'];
 };
 
 
-export type QueryCharactersArgs = {
-  filter?: InputMaybe<FilterCharacter>;
-  page?: InputMaybe<Scalars['Int']>;
+export type QueryMovieDetailArgs = {
+  id: Scalars['Int'];
 };
 
 
-export type QueryCharactersByIdsArgs = {
-  ids: Array<Scalars['ID']>;
+export type QueryPersonDetailArgs = {
+  id: Scalars['Int'];
 };
 
 
-export type QueryEpisodeArgs = {
-  id: Scalars['ID'];
+export type QuerySearchMovieArgs = {
+  term: Scalars['String'];
 };
 
 
-export type QueryEpisodesArgs = {
-  filter?: InputMaybe<FilterEpisode>;
-  page?: InputMaybe<Scalars['Int']>;
+export type QuerySearchPersonArgs = {
+  term: Scalars['String'];
 };
 
 
-export type QueryEpisodesByIdsArgs = {
-  ids: Array<Scalars['ID']>;
+export type QuerySearchShowArgs = {
+  term: Scalars['String'];
 };
 
 
-export type QueryLocationArgs = {
-  id: Scalars['ID'];
+export type QuerySeasonDetailArgs = {
+  seasonNumber: Scalars['Int'];
+  showId: Scalars['Int'];
 };
 
 
-export type QueryLocationsArgs = {
-  filter?: InputMaybe<FilterLocation>;
-  page?: InputMaybe<Scalars['Int']>;
+export type QueryShowDetailArgs = {
+  id: Scalars['Int'];
 };
 
 
-export type QueryLocationsByIdsArgs = {
-  ids: Array<Scalars['ID']>;
+export type QuerySimilarMoviesArgs = {
+  id: Scalars['Int'];
 };
 
-export type CharactersQueryVariables = Exact<{ [key: string]: never; }>;
+
+export type QuerySimilarShowsArgs = {
+  id: Scalars['Int'];
+};
+
+export type Season = {
+  __typename?: 'Season';
+  air_date?: Maybe<Scalars['String']>;
+  episodes?: Maybe<Array<Maybe<Episode>>>;
+  id: Scalars['Int'];
+  name: Scalars['String'];
+  overview?: Maybe<Scalars['String']>;
+  poster_path?: Maybe<Scalars['String']>;
+  season_number?: Maybe<Scalars['Int']>;
+};
+
+export type Show = {
+  __typename?: 'Show';
+  backdrop_path?: Maybe<Scalars['String']>;
+  credits?: Maybe<Credits>;
+  first_air_date?: Maybe<Scalars['String']>;
+  genres?: Maybe<Array<Maybe<Genres>>>;
+  homepage?: Maybe<Scalars['String']>;
+  id: Scalars['Int'];
+  last_air_date?: Maybe<Scalars['String']>;
+  name: Scalars['String'];
+  number_of_episodes?: Maybe<Scalars['Int']>;
+  number_of_seasons?: Maybe<Scalars['Int']>;
+  overview?: Maybe<Scalars['String']>;
+  poster_path?: Maybe<Scalars['String']>;
+  seasons?: Maybe<Array<Maybe<Season>>>;
+  videos?: Maybe<VideoResults>;
+  vote_average: Scalars['Float'];
+};
+
+export type Video = {
+  __typename?: 'Video';
+  id: Scalars['String'];
+  iso: Scalars['String'];
+  key: Scalars['String'];
+  name: Scalars['String'];
+  site: Scalars['String'];
+  type: Scalars['String'];
+};
+
+export type VideoResults = {
+  __typename?: 'VideoResults';
+  results?: Maybe<Array<Maybe<Video>>>;
+};
+
+export type PopularMoviesQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type CharactersQuery = { __typename?: 'Query', characters?: { __typename?: 'Characters', info?: { __typename?: 'Info', count?: number | null } | null, results?: Array<{ __typename?: 'Character', name?: string | null } | null> | null } | null, location?: { __typename?: 'Location', id?: string | null } | null, episodesByIds?: Array<{ __typename?: 'Episode', id?: string | null } | null> | null };
-
-export type PagesCharactersQueryVariables = Exact<{
-  page?: InputMaybe<Scalars['Int']>;
-}>;
+export type PopularMoviesQuery = { __typename?: 'Query', popularMovies: Array<{ __typename?: 'Movie', id: number, poster_path?: string | null, title: string, vote_average: number, runtime?: number | null, overview?: string | null, production_companies?: Array<{ __typename?: 'Company', name: string, logo_path?: string | null, origin_country?: string | null } | null> | null, videos?: { __typename?: 'VideoResults', results?: Array<{ __typename?: 'Video', site: string, key: string, type: string } | null> | null } | null } | null> };
 
 
-export type PagesCharactersQuery = { __typename?: 'Query', characters?: { __typename?: 'Characters', info?: { __typename?: 'Info', count?: number | null, pages?: number | null, next?: number | null } | null, results?: Array<{ __typename?: 'Character', name?: string | null, status?: string | null, gender?: string | null, image?: string | null } | null> | null } | null };
-
-
-export const CharactersDocument = `
-    query characters {
-  characters(page: 2, filter: {name: "rick"}) {
-    info {
-      count
-    }
-    results {
+export const PopularMoviesDocument = `
+    query popularMovies {
+  popularMovies {
+    id
+    poster_path
+    title
+    vote_average
+    runtime
+    production_companies {
       name
+      logo_path
+      origin_country
     }
-  }
-  location(id: 1) {
-    id
-  }
-  episodesByIds(ids: [1, 2]) {
-    id
+    overview
+    videos {
+      results {
+        site
+        key
+        type
+      }
+    }
   }
 }
     `;
-export const useCharactersQuery = <
-      TData = CharactersQuery,
+export const usePopularMoviesQuery = <
+      TData = PopularMoviesQuery,
       TError = unknown
     >(
       client: GraphQLClient,
-      variables?: CharactersQueryVariables,
-      options?: UseQueryOptions<CharactersQuery, TError, TData>,
+      variables?: PopularMoviesQueryVariables,
+      options?: UseQueryOptions<PopularMoviesQuery, TError, TData>,
       headers?: RequestInit['headers']
     ) =>
-    useQuery<CharactersQuery, TError, TData>(
-      variables === undefined ? ['characters'] : ['characters', variables],
-      fetcher<CharactersQuery, CharactersQueryVariables>(client, CharactersDocument, variables, headers),
-      options
-    );
-export const PagesCharactersDocument = `
-    query pagesCharacters($page: Int) {
-  characters(page: $page) {
-    info {
-      count
-      pages
-      next
-    }
-    results {
-      name
-      status
-      gender
-      image
-    }
-  }
-}
-    `;
-export const usePagesCharactersQuery = <
-      TData = PagesCharactersQuery,
-      TError = unknown
-    >(
-      client: GraphQLClient,
-      variables?: PagesCharactersQueryVariables,
-      options?: UseQueryOptions<PagesCharactersQuery, TError, TData>,
-      headers?: RequestInit['headers']
-    ) =>
-    useQuery<PagesCharactersQuery, TError, TData>(
-      variables === undefined ? ['pagesCharacters'] : ['pagesCharacters', variables],
-      fetcher<PagesCharactersQuery, PagesCharactersQueryVariables>(client, PagesCharactersDocument, variables, headers),
+    useQuery<PopularMoviesQuery, TError, TData>(
+      variables === undefined ? ['popularMovies'] : ['popularMovies', variables],
+      fetcher<PopularMoviesQuery, PopularMoviesQueryVariables>(client, PopularMoviesDocument, variables, headers),
       options
     );

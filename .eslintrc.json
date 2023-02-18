@@ -3,5 +3,6 @@
   "rules": {
     "quotes": [2, "single", { "avoidEscape": true }],
     "semi": "error"
-  }
+  },
+  "ignorePatterns": ["src/apollo/generated/graphql.ts"]
 }
