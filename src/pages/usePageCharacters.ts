@@ -1,4 +1,4 @@
-import { PagesCharacters, PagesCharactersVariables,PagesCharactersDocument } from "@graphqlTypes";
+import { PagesCharactersQuery, PagesCharactersQueryVariables,PagesCharactersDocument } from "@graphqlTypes";
 import { useGeneratedQuery } from "@graphqlHooks";
 
 import { API_URL } from "./apiurl";
@@ -8,10 +8,10 @@ const UsePageCharacters = (props): any => {
     const endpoint = API_URL
 
     const { status, data } = useGeneratedQuery<
-      PagesCharacters,
+      PagesCharactersQuery,
       unknown,
-      PagesCharactersVariables,
-      PagesCharacters
+      PagesCharactersQueryVariables,
+      PagesCharactersQuery
     >(
       endpoint,
       'PageCharacters',
