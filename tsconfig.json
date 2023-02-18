@@ -19,10 +19,10 @@
     "paths": {
       "@graphqlHooks": ["src/apollo/hooks/index.ts"],
       "@graphqlTypes": ["src/apollo/generated/graphql.ts"],
+      "@apiUrl": ["/src/apollo/common/index.ts"]
     }
   },
   "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }],
   "exclude": ["src/apollo/generated/graphql.ts"]
-  
 }
