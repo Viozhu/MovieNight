@@ -1,10 +1,10 @@
+import { API_URL } from "@constants";
+import { useGeneratedQuery } from "@graphqlHooks";
 import {
+  PagesCharactersDocument,
   PagesCharactersQuery,
   PagesCharactersQueryVariables,
-  PagesCharactersDocument,
 } from "@graphqlTypes";
-import { useGeneratedQuery } from "@graphqlHooks";
-import { API_URL } from "@apiUrl";
 
 const UsePageCharacters = (props): any => {
   const { variables } = props;

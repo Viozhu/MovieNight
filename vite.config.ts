@@ -7,7 +7,7 @@ export default defineConfig({
     alias: {
       "@graphqlTypes": "/src/apollo/generated/graphql.ts",
       "@graphqlHooks": "/src/apollo/hooks/index.ts",
-      "@apiUrl": "/src/apollo/common/index.ts",
+      "@constants": "/src/apollo/common/index.ts",
     },
   },
   plugins: [react()],

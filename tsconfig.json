@@ -18,8 +18,8 @@
     "baseUrl": ".",
     "paths": {
       "@graphqlHooks": ["src/apollo/hooks/index.ts"],
-      "@graphqlTypes": ["src/apollo/generated/graphql.ts"],
-      "@apiUrl": ["/src/apollo/common/index.ts"]
+      "@constants": ["./src/apollo/common/index.ts"],
+      "@graphqlTypes": ["src/apollo/generated/graphql.ts"]
     }
   },
   "include": ["src"],
