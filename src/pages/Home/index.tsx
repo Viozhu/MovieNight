@@ -30,7 +30,7 @@ const Home = () => {
         <div className="absolute top-20 left-0 w-full flex flex-col justify-center items-center bg-transparent-2  h-[92vh]">
           <div className="text-center flex flex-col items-center space-y-12">
             <h1 className="text-5xl text-brown-3 font-bold">
-              Welcome to Movie Nigth
+              Welcome to Movie Night
             </h1>
             <p className="text-white text-xl">These are the latest releases.</p>
             <div className="flex space-x-2 lg:space-x-10 mb-12 px-2 overflow-x-auto scrollbar-hide">
@@ -44,12 +44,14 @@ const Home = () => {
               ))}
             </div>
           </div>
-          <button
-            className="bg-white px-4 py-4 mt-32 animate-bounce scale-175 border-2 rounded-full"
-            onClick={() => scrollSmooth("conte")}
-          >
-            <Icon name="arrow-down" />
-          </button>
+          <div className="mt-6 h-24">
+            <button
+              className="bg-transparent px-4 py-4 mt-12 animate-bounce scale-175 border-2 rounded-full"
+              onClick={() => scrollSmooth("conte")}
+            >
+              <Icon name="arrow-down" />
+            </button>
+          </div>
           <div id="conte" />
         </div>
       </div>

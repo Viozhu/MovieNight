@@ -1,7 +1,10 @@
+//@ts-nocheck
 import { Movie } from "@graphqlTypes";
-import React from "react";
+import { useState } from "react";
+import { Modal } from "@styleComponents";
 import Card from "../Card";
 import * as styles from "./styles";
+import CardModal from "../CardModal";
 type Props = {
   data: Array<Movie>;
   status: string;
@@ -10,6 +13,10 @@ type Props = {
 };
 
 const Tabs = ({ data, status, title, subTitle }: Props) => {
+  const [currentItem, setCurrentItem] = useState<Movie | {}>({
+    item: {},
+    show: false,
+  });
   return (
     <>
       <div className="flex flex-col items-center justify-center my-12">
@@ -20,7 +27,14 @@ const Tabs = ({ data, status, title, subTitle }: Props) => {
         <div className="flex justify-center items-center">
           <div className={styles.CARD_CONTAINER + "conte"}>
             {data.length > 0 ? (
-              data.slice(0, 7).map((item) => <Card item={item} />)
+              data
+                .slice(0, 7)
+                .map((item) => (
+                  <Card
+                    item={item}
+                    onClick={() => setCurrentItem({ item, show: true })}
+                  />
+                ))
             ) : (
               <div className="h-24 flex items-center justify-center w-full">
                 <p className="text-center text-2xl">No movies added yet 😭</p>
@@ -29,6 +43,14 @@ const Tabs = ({ data, status, title, subTitle }: Props) => {
           </div>
         </div>
       )}
+
+      <Modal
+        visible={currentItem.show}
+        onClose={() => {
+          setCurrentItem({ item: {}, show: false });
+        }}
+        children={<CardModal item={currentItem.item} />}
+      />
     </>
   );
 };

@@ -1,15 +1,15 @@
 import { Movie } from "@graphqlTypes";
 import React from "react";
 import { useDispatch } from "react-redux";
-import { addMovie } from "../../../../Redux/counter";
 import * as styles from "./styles";
-type Props = { item: Movie };
+type Props = { item: Movie; onClick: () => void };
 
-const Card = ({ item }: Props) => {
+const Card = ({ item, onClick }: Props) => {
   const dispatch = useDispatch();
+
   return (
     <ul className={styles.CARD}>
-      <div className={styles.CARD_CONTENT} key={item.id}>
+      <div className={styles.CARD_CONTENT} key={item.id} onClick={onClick}>
         <img
           src={"https://image.tmdb.org/t/p/w185" + item.poster_path}
           className="rounded-t"

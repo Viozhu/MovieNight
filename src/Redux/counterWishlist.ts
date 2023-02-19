@@ -10,21 +10,21 @@ const initialState: CounterState = {
   value: [],
 };
 
-export const favoriteSlice = createSlice({
-  name: "favorite",
+export const wishListSlice = createSlice({
+  name: "wishList",
   initialState,
   reducers: {
-    addFavMovie: (state, action: PayloadAction<Movie>) => {
+    addWishMovie: (state, action: PayloadAction<Movie>) => {
       if (!state.value.find((item) => item.id === action.payload.id)) {
         state.value.push(action.payload);
       }
     },
-    removeFavMovie: (state, action: PayloadAction<Movie>) => {
+    removeWishMovie: (state, action: PayloadAction<Movie>) => {
       state.value = state.value.filter((item) => item.id !== action.payload.id);
     },
   },
 });
 
-export const { addFavMovie, removeFavMovie } = favoriteSlice.actions;
+export const { addWishMovie, removeWishMovie } = wishListSlice.actions;
 
-export default favoriteSlice.reducer;
+export default wishListSlice.reducer;

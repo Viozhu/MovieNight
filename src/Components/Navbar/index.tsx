@@ -1,7 +1,8 @@
 import { Icon, Input } from "@styleComponents";
 import * as styles from "./styles";
+import Logo from "../../assets/logo.png";
 import "./styles.css";
-import { Info, FavoritesMenu } from "./subsections";
+import { Info, FavoritesMenu, WishListMenu } from "./subsections";
 
 type subSectionsTypes = {
   title: string | JSX.Element;
@@ -25,6 +26,10 @@ export const NavBar = (): JSX.Element => {
       title: "Info",
       content: <Info />,
     },
+    {
+      title: <Icon name="add-to-list" size={24} color="8B7C6E" />,
+      content: <WishListMenu />,
+    },
   ];
 
   const SubSection = ({ title, content }: subSectionsTypes): JSX.Element => (
@@ -40,9 +45,9 @@ export const NavBar = (): JSX.Element => {
     <nav className={styles.NAV_CONTAINER}>
       <div className={styles.CONTAINER}>
         <img
-          src="https://i.imgur.com/hr8TOi9.png"
+          src={Logo}
           alt="logo"
-          onClick={sendToTopsmothly}
+          onClick={() => sendToTopsmothly()}
           className={styles.LOGO}
         />
         <div>
@@ -55,6 +60,10 @@ export const NavBar = (): JSX.Element => {
               <Icon name="magnifying-glass" size={24} color="D9BDAB" />
               <Input placeholder="Search" id="search" />
             </div>
+            <SubSection
+              title={subSections[2].title}
+              content={subSections[2].content}
+            />
             <SubSection
               title={subSections[1].title}
               content={subSections[1].content}
