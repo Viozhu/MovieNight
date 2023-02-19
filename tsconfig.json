@@ -23,7 +23,7 @@
       "@styleComponents": ["src/Styles/index.ts"]
     }
   },
-  "include": ["src"],
+  "include": ["src/**/*"],
   "references": [{ "path": "./tsconfig.node.json" }],
   "exclude": ["src/apollo/generated/graphql.ts"]
 }

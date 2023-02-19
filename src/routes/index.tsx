@@ -1,5 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
-import { Home, Favorites } from "../Pages/index";
+import { Home, Favorites } from "../Pages";
 
 export const router = createBrowserRouter([
   {

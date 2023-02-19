@@ -4,7 +4,7 @@ import { ReactQueryDevtools } from "react-query/devtools";
 import { RouterProvider } from "react-router-dom";
 import { NavBar } from "./Components";
 import "./index.css";
-import { router } from "./Routes/index";
+import { router } from "./routes/index";
 import { Provider } from "react-redux";
 import { store } from "./Redux/store";
 

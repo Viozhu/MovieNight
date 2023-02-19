@@ -1,11 +1,13 @@
 import { useState } from "react";
-import UsePopularMovies from "./graphql/queries/usePopularMovies";
+
 import data from "./graphql/queries/fakePopularMovies.json";
 import { useDispatch } from "react-redux";
 import { addMovie } from "../../Redux/counter";
 
 import "./style.css";
 import { Icon } from "@styleComponents";
+import UsePopularMovies from "./graphql/queries/usePopularMovies";
+
 const Home = () => {
   const [count, setCount] = useState(0);
   const dispatch = useDispatch();
