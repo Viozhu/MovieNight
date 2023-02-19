@@ -6,8 +6,14 @@ import {
   PopularMoviesQueryVariables,
 } from "@graphqlTypes";
 
-const UsePopularMovies = (props): any => {
-  const { variables } = props;
+type UsePopularMoviesReturn = {
+  status: "loading" | "error" | "success" | "idle";
+  data: PopularMoviesQuery | undefined;
+  error: Error | undefined | {};
+  refetch: () => void;
+};
+
+const UsePopularMovies = (props): UsePopularMoviesReturn => {
   const endpoint = API_URL;
 
   const { status, data, error, refetch } = useGeneratedQuery<
@@ -15,7 +21,7 @@ const UsePopularMovies = (props): any => {
     unknown,
     PopularMoviesQueryVariables,
     PopularMoviesQuery
-  >(endpoint, "PopularMovies", PopularMoviesDocument, variables, {
+  >(endpoint, "PopularMovies", PopularMoviesDocument, null, {
     refetchOnWindowFocus: false,
   });
 

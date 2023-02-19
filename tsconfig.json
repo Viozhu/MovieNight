@@ -24,6 +24,7 @@
     }
   },
   "include": ["src/**/*"],
+  "typeRoots": ["./src/@types", "./node_modules/@types"],
   "references": [{ "path": "./tsconfig.node.json" }],
   "exclude": ["src/apollo/generated/graphql.ts"]
 }

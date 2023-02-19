@@ -8,7 +8,14 @@ type subSectionsTypes = {
   content: JSX.Element;
 };
 
-export const NavBar = () => {
+export const NavBar = (): JSX.Element => {
+  const sendToTopsmothly: () => void = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
   const subSections: Array<subSectionsTypes> = [
     {
       title: <Icon name="heart-outlined" size={24} color="8B7C6E" hover />,
@@ -20,7 +27,7 @@ export const NavBar = () => {
     },
   ];
 
-  const SubSection = ({ title, content }: subSectionsTypes) => (
+  const SubSection = ({ title, content }: subSectionsTypes): JSX.Element => (
     <li className={styles.LINKS_CONTAINER}>
       <a href="#" className={styles.A_TAG}>
         {title}
@@ -35,6 +42,7 @@ export const NavBar = () => {
         <img
           src="https://i.imgur.com/hr8TOi9.png"
           alt="logo"
+          onClick={sendToTopsmothly}
           className={styles.LOGO}
         />
         <div>
