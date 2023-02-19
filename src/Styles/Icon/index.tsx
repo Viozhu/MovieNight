@@ -5,9 +5,11 @@ type Props = {
   size?: number;
   color?: string;
   hover?: boolean;
+  onClick?: () => void;
+  style?: string;
 };
 
-const Icon = ({ name, size, color, hover }: Props) => {
+const Icon = ({ name, size, color, hover, onClick, style }: Props) => {
   const [iconName, setIconName] = useState(name);
 
   return (
@@ -19,7 +21,9 @@ const Icon = ({ name, size, color, hover }: Props) => {
       onMouseOut={() => {
         hover && setIconName(name);
       }}
+      onClick={onClick}
       alt="Imagen"
+      className={style}
     />
   );
 };
@@ -29,6 +33,8 @@ Icon.defaultProps = {
   color: "D9BDAB",
   name: "home",
   hover: false,
+  style: "",
+  onClick: () => {},
 };
 
 export default Icon;

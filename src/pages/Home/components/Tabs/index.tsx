@@ -1,7 +1,7 @@
 //@ts-nocheck
 import { Movie } from "@graphqlTypes";
 import { useState } from "react";
-import { Modal } from "@styleComponents";
+import { Icon, Modal } from "@styleComponents";
 import Card from "../Card";
 import * as styles from "./styles";
 import CardModal from "../CardModal";
@@ -18,6 +18,23 @@ const Tabs = ({ data, status, title, subTitle }: Props) => {
     item: {},
     show: false,
   });
+
+  const sliceController = (direction: string) => {
+    const contenedor = document.getElementById("sliceContenedor");
+    const scrollOffset = 600;
+
+    if (direction === "left") {
+      contenedor.scrollTo({
+        left: contenedor.scrollLeft - scrollOffset,
+        behavior: "smooth",
+      });
+    } else {
+      contenedor.scrollTo({
+        left: contenedor.scrollLeft + scrollOffset,
+        behavior: "smooth",
+      });
+    }
+  };
   return (
     <>
       <div className="flex flex-col items-center justify-center space-y-1 mt-12 mb-8">
@@ -26,22 +43,34 @@ const Tabs = ({ data, status, title, subTitle }: Props) => {
       </div>
       {status === "success" && (
         <div className="flex justify-center items-center">
-          <div className={styles.CARD_CONTAINER + "conte"}>
-            {data.length > 0 ? (
-              data
-                .slice(0, 7)
-                .map((item) => (
+          {data.length > 0 ? (
+            <div className="flex justify-center space-x-5 items-center">
+              <Icon
+                name="chevron-thin-left"
+                color="ffffff"
+                onClick={() => sliceController("left")}
+                style="  scale-100 cursor-pointer hover:scale-150 hover:ease-in-out hover:duration-300 hover:transition"
+              />
+              <div className={styles.CARD_CONTAINER} id="sliceContenedor">
+                {data.map((item) => (
                   <Card
                     item={item}
                     onClick={() => setCurrentItem({ item, show: true })}
                   />
-                ))
-            ) : (
-              <div className="h-24 flex items-center justify-center w-full">
-                <p className="text-center text-2xl">No movies added yet 😭</p>
+                ))}
               </div>
-            )}
-          </div>
+              <Icon
+                name="chevron-thin-right"
+                color="ffffff"
+                onClick={() => sliceController("right")}
+                style=" scale-100 cursor-pointer hover:scale-150 hover:ease-in-out hover:duration-300 hover:transition"
+              />
+            </div>
+          ) : (
+            <div className="h-24 flex items-center justify-center w-full">
+              <p className="text-center text-2xl">No movies added yet 😭</p>
+            </div>
+          )}
         </div>
       )}
 
