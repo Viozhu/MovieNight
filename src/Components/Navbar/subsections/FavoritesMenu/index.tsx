@@ -1,4 +1,3 @@
-import data from "../../../../Pages/Home/graphql/queries/fakePopularMovies.json";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../../../../Redux/store";
 import "../../styles.css";
