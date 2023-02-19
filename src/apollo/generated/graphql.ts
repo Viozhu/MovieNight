@@ -270,12 +270,138 @@ export type VideoResults = {
   results?: Maybe<Array<Maybe<Video>>>;
 };
 
+export type GetAllMoviesQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetAllMoviesQuery = { __typename?: 'Query', nowPlayingMovies: Array<{ __typename?: 'Movie', id: number, imdb_id?: string | null, poster_path?: string | null, title: string, overview?: string | null, release_date?: string | null, runtime?: number | null, vote_average: number, production_companies?: Array<{ __typename?: 'Company', name: string } | null> | null, genres?: Array<{ __typename?: 'Genres', name: string } | null> | null } | null>, popularMovies: Array<{ __typename?: 'Movie', id: number, poster_path?: string | null, title: string, vote_average: number, runtime?: number | null, overview?: string | null, production_companies?: Array<{ __typename?: 'Company', name: string, logo_path?: string | null, origin_country?: string | null } | null> | null, videos?: { __typename?: 'VideoResults', results?: Array<{ __typename?: 'Video', site: string, key: string, type: string } | null> | null } | null } | null>, upcomingMovies: Array<{ __typename?: 'Movie', id: number, imdb_id?: string | null, poster_path?: string | null, title: string, overview?: string | null, release_date?: string | null, runtime?: number | null, vote_average: number, production_companies?: Array<{ __typename?: 'Company', name: string } | null> | null, genres?: Array<{ __typename?: 'Genres', name: string } | null> | null } | null> };
+
+export type NowPlayingMoviesQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type NowPlayingMoviesQuery = { __typename?: 'Query', nowPlayingMovies: Array<{ __typename?: 'Movie', id: number, imdb_id?: string | null, poster_path?: string | null, title: string, overview?: string | null, release_date?: string | null, runtime?: number | null, vote_average: number, production_companies?: Array<{ __typename?: 'Company', name: string } | null> | null, genres?: Array<{ __typename?: 'Genres', name: string } | null> | null } | null> };
+
 export type PopularMoviesQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type PopularMoviesQuery = { __typename?: 'Query', popularMovies: Array<{ __typename?: 'Movie', id: number, poster_path?: string | null, title: string, vote_average: number, runtime?: number | null, overview?: string | null, production_companies?: Array<{ __typename?: 'Company', name: string, logo_path?: string | null, origin_country?: string | null } | null> | null, videos?: { __typename?: 'VideoResults', results?: Array<{ __typename?: 'Video', site: string, key: string, type: string } | null> | null } | null } | null> };
 
+export type SimilarMoviesQueryVariables = Exact<{
+  id: Scalars['Int'];
+}>;
 
+
+export type SimilarMoviesQuery = { __typename?: 'Query', similarMovies?: Array<{ __typename?: 'Movie', title: string, poster_path?: string | null } | null> | null };
+
+export type UpcomingMoviesQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type UpcomingMoviesQuery = { __typename?: 'Query', upcomingMovies: Array<{ __typename?: 'Movie', id: number, imdb_id?: string | null, poster_path?: string | null, title: string, overview?: string | null, release_date?: string | null, runtime?: number | null, vote_average: number, production_companies?: Array<{ __typename?: 'Company', name: string } | null> | null, genres?: Array<{ __typename?: 'Genres', name: string } | null> | null } | null> };
+
+
+export const GetAllMoviesDocument = `
+    query getAllMovies {
+  nowPlayingMovies {
+    id
+    imdb_id
+    poster_path
+    title
+    overview
+    release_date
+    runtime
+    vote_average
+    production_companies {
+      name
+    }
+    genres {
+      name
+    }
+  }
+  popularMovies {
+    id
+    poster_path
+    title
+    vote_average
+    runtime
+    production_companies {
+      name
+      logo_path
+      origin_country
+    }
+    overview
+    videos {
+      results {
+        site
+        key
+        type
+      }
+    }
+  }
+  upcomingMovies {
+    id
+    imdb_id
+    poster_path
+    title
+    overview
+    release_date
+    runtime
+    vote_average
+    production_companies {
+      name
+    }
+    genres {
+      name
+    }
+  }
+}
+    `;
+export const useGetAllMoviesQuery = <
+      TData = GetAllMoviesQuery,
+      TError = unknown
+    >(
+      client: GraphQLClient,
+      variables?: GetAllMoviesQueryVariables,
+      options?: UseQueryOptions<GetAllMoviesQuery, TError, TData>,
+      headers?: RequestInit['headers']
+    ) =>
+    useQuery<GetAllMoviesQuery, TError, TData>(
+      variables === undefined ? ['getAllMovies'] : ['getAllMovies', variables],
+      fetcher<GetAllMoviesQuery, GetAllMoviesQueryVariables>(client, GetAllMoviesDocument, variables, headers),
+      options
+    );
+export const NowPlayingMoviesDocument = `
+    query nowPlayingMovies {
+  nowPlayingMovies {
+    id
+    imdb_id
+    poster_path
+    title
+    overview
+    release_date
+    runtime
+    vote_average
+    production_companies {
+      name
+    }
+    genres {
+      name
+    }
+  }
+}
+    `;
+export const useNowPlayingMoviesQuery = <
+      TData = NowPlayingMoviesQuery,
+      TError = unknown
+    >(
+      client: GraphQLClient,
+      variables?: NowPlayingMoviesQueryVariables,
+      options?: UseQueryOptions<NowPlayingMoviesQuery, TError, TData>,
+      headers?: RequestInit['headers']
+    ) =>
+    useQuery<NowPlayingMoviesQuery, TError, TData>(
+      variables === undefined ? ['nowPlayingMovies'] : ['nowPlayingMovies', variables],
+      fetcher<NowPlayingMoviesQuery, NowPlayingMoviesQueryVariables>(client, NowPlayingMoviesDocument, variables, headers),
+      options
+    );
 export const PopularMoviesDocument = `
     query popularMovies {
   popularMovies {
@@ -312,5 +438,61 @@ export const usePopularMoviesQuery = <
     useQuery<PopularMoviesQuery, TError, TData>(
       variables === undefined ? ['popularMovies'] : ['popularMovies', variables],
       fetcher<PopularMoviesQuery, PopularMoviesQueryVariables>(client, PopularMoviesDocument, variables, headers),
+      options
+    );
+export const SimilarMoviesDocument = `
+    query similarMovies($id: Int!) {
+  similarMovies(id: $id) {
+    title
+    poster_path
+  }
+}
+    `;
+export const useSimilarMoviesQuery = <
+      TData = SimilarMoviesQuery,
+      TError = unknown
+    >(
+      client: GraphQLClient,
+      variables: SimilarMoviesQueryVariables,
+      options?: UseQueryOptions<SimilarMoviesQuery, TError, TData>,
+      headers?: RequestInit['headers']
+    ) =>
+    useQuery<SimilarMoviesQuery, TError, TData>(
+      ['similarMovies', variables],
+      fetcher<SimilarMoviesQuery, SimilarMoviesQueryVariables>(client, SimilarMoviesDocument, variables, headers),
+      options
+    );
+export const UpcomingMoviesDocument = `
+    query upcomingMovies {
+  upcomingMovies {
+    id
+    imdb_id
+    poster_path
+    title
+    overview
+    release_date
+    runtime
+    vote_average
+    production_companies {
+      name
+    }
+    genres {
+      name
+    }
+  }
+}
+    `;
+export const useUpcomingMoviesQuery = <
+      TData = UpcomingMoviesQuery,
+      TError = unknown
+    >(
+      client: GraphQLClient,
+      variables?: UpcomingMoviesQueryVariables,
+      options?: UseQueryOptions<UpcomingMoviesQuery, TError, TData>,
+      headers?: RequestInit['headers']
+    ) =>
+    useQuery<UpcomingMoviesQuery, TError, TData>(
+      variables === undefined ? ['upcomingMovies'] : ['upcomingMovies', variables],
+      fetcher<UpcomingMoviesQuery, UpcomingMoviesQueryVariables>(client, UpcomingMoviesDocument, variables, headers),
       options
     );

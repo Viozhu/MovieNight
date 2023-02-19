@@ -1,13 +1,13 @@
-import { gql, GraphQLClient } from "graphql-request";
-import { useQuery, UseQueryOptions, UseQueryResult } from "react-query";
-import { API_KEY } from "@constants";
+import { gql, GraphQLClient } from 'graphql-request';
+import { useQuery, UseQueryOptions, UseQueryResult } from 'react-query';
+import { API_KEY } from '@constants';
 
 export const useGeneratedQuery = <TData, TError, TVariables, TQuery>(
   endpoint: string,
   queryName: string,
   query: string,
   queryVariables?: TVariables,
-  options?: UseQueryOptions<TQuery, TError, TData>
+  options?: UseQueryOptions<TQuery, TError, TData>,
 ): UseQueryResult<TData, TError> => {
   const queryData = useQuery<TQuery, TError, TData>(
     [queryName, queryVariables],
@@ -17,11 +17,11 @@ export const useGeneratedQuery = <TData, TError, TVariables, TQuery>(
       `;
 
       const client_ = new GraphQLClient(endpoint, {
-        credentials: "include",
+        credentials: 'include',
         headers: {
           Authorization: `Bearer ${API_KEY}`,
-          "Access-Control-Allow-Origin": "*",
-          "Content-Type": "application/json;charset=utf-8",
+          'Access-Control-Allow-Origin': '*',
+          'Content-Type': 'application/json',
         },
       });
       try {
@@ -34,7 +34,7 @@ export const useGeneratedQuery = <TData, TError, TVariables, TQuery>(
 
       return {} as TQuery;
     },
-    options
+    options,
   );
 
   return queryData;

@@ -1,0 +1,54 @@
+query getAllMovies {
+  nowPlayingMovies {
+    id
+    imdb_id
+    poster_path
+    title
+    overview
+    release_date
+    runtime
+    vote_average
+    production_companies {
+      name
+    }
+    genres {
+      name
+    }
+  }
+  popularMovies {
+    id
+    poster_path
+    title
+    vote_average
+    runtime
+    production_companies {
+      name
+      logo_path
+      origin_country
+    }
+    overview
+    videos {
+      results {
+        site
+        key
+        type
+      }
+    }
+  }
+  upcomingMovies {
+    id
+    imdb_id
+    poster_path
+    title
+    overview
+    release_date
+    runtime
+    vote_average
+    production_companies {
+      name
+    }
+    genres {
+      name
+    }
+  }
+}
