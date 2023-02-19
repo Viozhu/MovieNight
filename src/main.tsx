@@ -5,13 +5,17 @@ import { RouterProvider } from "react-router-dom";
 import { NavBar } from "./Components";
 import "./index.css";
 import { router } from "./Routes";
+import { Provider } from "react-redux";
+import { store } from "./Redux/store";
 
 const queryClient = new QueryClient();
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
-  <QueryClientProvider client={queryClient}>
-    <NavBar />
-    <RouterProvider router={router} />
-    <ReactQueryDevtools initialIsOpen={false} />
-  </QueryClientProvider>
+  <Provider store={store}>
+    <QueryClientProvider client={queryClient}>
+      <NavBar />
+      <RouterProvider router={router} />
+      <ReactQueryDevtools initialIsOpen={false} />
+    </QueryClientProvider>
+  </Provider>
 );
