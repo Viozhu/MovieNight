@@ -1,4 +1,4 @@
-export const NAV_CONTAINER = "w-[99vw] sticky top-0 bg-transparent-2 z-10";
+export const NAV_CONTAINER = "w-full sticky top-0 bg-transparent-2 z-10";
 
 export const CONTAINER = "container mx-auto flex justify-between";
 

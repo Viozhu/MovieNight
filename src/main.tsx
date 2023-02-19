@@ -6,7 +6,7 @@ import { NavBar } from "./Components";
 import "./index.css";
 import { router } from "./routes/index";
 import { Provider } from "react-redux";
-import { store } from "./Redux/store";
+import { store } from "@redux/store";
 
 const queryClient = new QueryClient();
 

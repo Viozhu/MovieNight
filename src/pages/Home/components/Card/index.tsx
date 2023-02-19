@@ -5,8 +5,6 @@ import * as styles from "./styles";
 type Props = { item: Movie; onClick: () => void };
 
 const Card = ({ item, onClick }: Props) => {
-  const dispatch = useDispatch();
-
   return (
     <ul className={styles.CARD}>
       <div className={styles.CARD_CONTENT} key={item.id} onClick={onClick}>

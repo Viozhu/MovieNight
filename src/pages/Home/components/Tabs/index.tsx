@@ -5,6 +5,7 @@ import { Modal } from "@styleComponents";
 import Card from "../Card";
 import * as styles from "./styles";
 import CardModal from "../CardModal";
+
 type Props = {
   data: Array<Movie>;
   status: string;
@@ -19,7 +20,7 @@ const Tabs = ({ data, status, title, subTitle }: Props) => {
   });
   return (
     <>
-      <div className="flex flex-col items-center justify-center my-12">
+      <div className="flex flex-col items-center justify-center space-y-1 mt-12 mb-8">
         <h2 className="text-4xl font-bold text-brown-3">{title}</h2>
         <p className="text-xl text-brown-3">{subTitle}</p>
       </div>

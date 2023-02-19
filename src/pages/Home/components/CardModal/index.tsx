@@ -2,11 +2,8 @@ import { Movie } from "@graphqlTypes";
 import React from "react";
 import StartRating from "./StarRating";
 import dayjs from "dayjs";
-import { addFavMovie, removeFavMovie } from "../../../../Redux/counter";
-import {
-  addWishMovie,
-  removeWishMovie,
-} from "../../../../Redux/counterWishlist";
+import { addFavMovie, removeFavMovie } from "@redux/counterFav";
+import { addWishMovie, removeWishMovie } from "@redux/counterWishlist";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "src/Redux";
 import { Dispatch } from "@reduxjs/toolkit";

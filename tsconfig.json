@@ -20,7 +20,8 @@
       "@graphqlHooks": ["src/apollo/hooks/index.ts"],
       "@constants": ["src/apollo/common/index.ts"],
       "@graphqlTypes": ["src/apollo/generated/graphql.ts"],
-      "@styleComponents": ["src/Styles/index.ts"]
+      "@styleComponents": ["src/Styles/index.ts"],
+      "@redux": ["/src/Redux"]
     }
   },
   "include": ["src/**/*"],

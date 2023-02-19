@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import counterSlice from "./counter";
+import counterSlice from "./counterFav";
 import counterWishlist from "./counterWishlist";
 
 export const store = configureStore({

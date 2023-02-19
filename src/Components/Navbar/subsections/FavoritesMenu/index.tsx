@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
-import { RootState } from "../../../../Redux/store";
+import { RootState } from "@redux/store";
 import "../../styles.css";
 
 import * as styles from "./styles";
