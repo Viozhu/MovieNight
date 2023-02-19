@@ -1,6 +1,6 @@
-import { createSlice } from "@reduxjs/toolkit";
-import type { PayloadAction } from "@reduxjs/toolkit";
-import { Movie } from "@graphqlTypes";
+import { createSlice } from '@reduxjs/toolkit';
+import type { PayloadAction } from '@reduxjs/toolkit';
+import { Movie } from '@graphqlTypes';
 
 export interface CounterState {
   value: Array<Movie>;
@@ -11,7 +11,7 @@ const initialState: CounterState = {
 };
 
 export const wishListSlice = createSlice({
-  name: "wishList",
+  name: 'wishList',
   initialState,
   reducers: {
     addWishMovie: (state, action: PayloadAction<Movie>) => {

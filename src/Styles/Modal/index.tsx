@@ -1,5 +1,6 @@
-import Icon from "../Icon";
-import * as styles from "./styles";
+import Icon from '../Icon';
+import * as styles from './styles';
+
 type Props = {
   visible: boolean;
   onClose: () => void;
@@ -13,7 +14,7 @@ const Modal = ({ visible, onClose, children, title }: Props) => {
       {visible && (
         <div
           className={styles.MODAL_CONTAINER}
-          style={{ maxHeight: "100vh", overflowY: "auto" }}
+          style={{ maxHeight: '100vh', overflowY: 'auto' }}
         >
           <div className={styles.INNER_CONTENT}>
             <div className={styles.MODAL_CONTENT}>
@@ -31,7 +32,7 @@ const Modal = ({ visible, onClose, children, title }: Props) => {
 
               {title && (
                 <div
-                  className={`${styles.TITLE_CONTAINER} ${title ? "mb-4" : ""}`}
+                  className={`${styles.TITLE_CONTAINER} ${title ? 'mb-4' : ''}`}
                 >
                   <div className="flex flex-row items-center w-auto">
                     <h2 className="text-xl text-black">{title}</h2>
