@@ -1,14 +1,19 @@
 import { useState } from "react";
 import UsePopularMovies from "./graphql/queries/usePopularMovies";
+import data from "./graphql/queries/fakePopularMovies.json";
 
 const Home = () => {
   const [count, setCount] = useState(0);
 
-  const { status, data, error, refectch } = UsePopularMovies({
+  const {
+    status,
+    data: dataTest,
+    error,
+    refectch,
+  } = UsePopularMovies({
     variables: { page: count + 1 },
   });
 
-  console.log(status, data, "data");
   return (
     <div className="App">
       <h1 className="text-3xl text-red-400 font-bold underline">
@@ -23,10 +28,13 @@ const Home = () => {
       {status === "error" && <div>error</div>}
       {status === "success" && (
         <div>
-          {data?.characters?.results?.map((item) => (
+          {data?.data.popularMovies.map((item) => (
             <div key={item.id}>
-              <h1>{item.name}</h1>
-              <img src={item.image} alt="image" />
+              <h1>{item.title}</h1>
+              <img
+                src={"https://image.tmdb.org/t/p/w185" + item.poster_path}
+                alt="image"
+              />
             </div>
           ))}
         </div>

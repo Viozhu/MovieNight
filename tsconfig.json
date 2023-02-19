@@ -18,11 +18,12 @@
     "baseUrl": ".",
     "paths": {
       "@graphqlHooks": ["src/apollo/hooks/index.ts"],
-      "@constants": ["./src/apollo/common/index.ts"],
-      "@graphqlTypes": ["src/apollo/generated/graphql.ts"]
+      "@constants": ["src/apollo/common/index.ts"],
+      "@graphqlTypes": ["src/apollo/generated/graphql.ts"],
+      "@styleComponents": ["src/Styles/index.ts"]
     }
   },
   "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }],
-  "exclude": ["./src/apollo/generated/graphql.ts"]
+  "exclude": ["src/apollo/generated/graphql.ts"]
 }

@@ -12,16 +12,27 @@
   –––––––––––––––––––––––––––––––––––––––––––––––––– */
 .hoverable {
   position: static;
+  transition: all 0.01s ease-in-out;
 }
 
 .hoverable > a:after {
-  content: '\25BC';
+  content: "\25BC";
   font-size: 10px;
   padding-left: 6px;
   position: relative;
   top: -1px;
+  transition: all 0.01s ease-in-out;
 }
 
 .hoverable:hover .mega-menu {
   display: block;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }

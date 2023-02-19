@@ -1,18 +1,17 @@
-
-import { gql, GraphQLClient } from 'graphql-request';
+import { gql, GraphQLClient } from "graphql-request";
 import {
   useMutation,
   UseMutationOptions,
   UseMutationResult,
-} from 'react-query';
+} from "react-query";
 
+import { API_KEY } from "@constants";
 
 export const useGeneratedMutation = <TMutation, TVariables, TError, TContext>(
   endpoint: string,
   mutation: string,
-  options?: UseMutationOptions<TMutation, TError, TVariables, TContext>,
+  options?: UseMutationOptions<TMutation, TError, TVariables, TContext>
 ): UseMutationResult<TMutation, TError, TVariables, TContext> => {
-
   const mutationData = useMutation(
     async (variables: TVariables): Promise<TMutation> => {
       const gqlQuery = gql`
@@ -20,26 +19,24 @@ export const useGeneratedMutation = <TMutation, TVariables, TError, TContext>(
       `;
 
       const client_ = new GraphQLClient(endpoint, {
-        credentials: 'include',
+        credentials: "include",
         headers: {
-          'Content-Type': 'application/json',
-         
+          Authorization: `Bearer ${API_KEY}`,
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
         },
       });
 
       try {
-        const result = await client_.request<TMutation>(
-          gqlQuery,
-          variables,
-        );
+        const result = await client_.request<TMutation>(gqlQuery, variables);
         return result;
       } catch (error) {
-        alert(error)
+        alert(error);
       }
 
       return;
     },
-    options,
+    options
   );
 
   return mutationData;

@@ -8,6 +8,7 @@ export default defineConfig({
       "@graphqlTypes": "/src/apollo/generated/graphql.ts",
       "@graphqlHooks": "/src/apollo/hooks/index.ts",
       "@constants": "/src/apollo/common/index.ts",
+      "@styleComponents": "/src/Styles/index.ts",
     },
   },
   plugins: [react()],

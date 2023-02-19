@@ -4,7 +4,7 @@ import { ReactQueryDevtools } from "react-query/devtools";
 import { RouterProvider } from "react-router-dom";
 import { NavBar } from "./Components";
 import "./index.css";
-import { router } from "./routes";
+import { router } from "./Routes";
 
 const queryClient = new QueryClient();
 
