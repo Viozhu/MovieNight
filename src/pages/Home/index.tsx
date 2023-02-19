@@ -1,12 +1,12 @@
-import data from "./graphql/queries/fakePopularMovies.json";
+import data from './graphql/queries/fakePopularMovies.json';
 
-import * as styles from "./styles";
+import * as styles from './styles';
 
-import { Tabs } from "./components";
-import Banner from "./components/Banner";
-import UsePopularMovies from "./graphql/queries/usePopularMovies";
+import { Tabs } from './components';
+import Banner from './components/Banner';
+import UsePopularMovies from './graphql/queries/usePopularMovies';
 
-const Home = () => {
+function Home() {
   const { status, data: dataTest, error, refetch } = UsePopularMovies({});
 
   return (
@@ -46,6 +46,6 @@ const Home = () => {
       />
     </div>
   );
-};
+}
 
 export default Home;

@@ -1,13 +1,13 @@
-import { createBrowserRouter } from "react-router-dom";
-import { Home, Favorites } from "../pages";
+import { createBrowserRouter } from 'react-router-dom';
+import { Home, Favorites } from '../pages';
 
 export const router = createBrowserRouter([
   {
-    path: "/",
+    path: '/',
     element: <Home />,
   },
   {
-    path: "/favorites",
+    path: '/favorites',
     element: <Favorites />,
   },
 ]);

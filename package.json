@@ -8,7 +8,7 @@
     "preview": "vite preview",
     "codegen": "graphql-codegen",
     "watch": "graphql-codegen -w",
-    "lint": "eslint_d src --ext .js,.jsx,.ts,.tsx --fix",
+    "lint": "eslint_d  ./src --fix --ext .ts,.tsx ",
     "prepare": "husky install"
   },
   "dependencies": {
@@ -43,8 +43,10 @@
     "@vitejs/plugin-react": "^3.1.0",
     "autoprefixer": "^10.4.13",
     "eslint": "^8.34.0",
+    "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-node": "^4.1.0",
     "eslint-config-prettier": "^8.6.0",
+    "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-jsx-a11y": "^6.7.1",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^4.2.1",
