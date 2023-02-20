@@ -1,13 +1,13 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '@reduxStore';
 import '../../styles.css';
-
+import { Dispatch } from '@reduxjs/toolkit';
 import * as styles from './styles';
-
-type Props = {};
+import { removeFavMovie } from '@reduxSlicesFav';
 
 const FavoritesMenu = () => {
   const movies = useSelector((state: RootState) => state.counter.value);
+  const dispatch: Dispatch = useDispatch();
 
   return (
     <div className={styles.MENU_CONTAINER}>
@@ -18,7 +18,7 @@ const FavoritesMenu = () => {
       <div className={styles.CARD_CONTAINER}>
         {movies.length > 0 ? (
           movies.map((item) => (
-            <ul className={styles.CARD}>
+            <ul className={styles.CARD} key={item.id + 'movies'}>
               <div className={styles.CARD_CONTENT} key={item.id}>
                 <img
                   src={'https://image.tmdb.org/t/p/w185' + item.poster_path}
@@ -28,6 +28,12 @@ const FavoritesMenu = () => {
                 />
                 <div className={styles.TEXT_CONTENT}>
                   <p className="text-center ">{item.title}</p>
+                </div>
+                <div
+                  className={styles.TEXT_CONTENT_DELETE}
+                  onClick={() => dispatch(removeFavMovie(item))}
+                >
+                  <p className="text-center ">Remove</p>
                 </div>
               </div>
             </ul>

@@ -26,3 +26,6 @@ body {
   min-width: 320px;
   min-height: 100vh;
 }
+.pointer-events-none {
+  pointer-events: none;
+}

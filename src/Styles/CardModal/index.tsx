@@ -102,7 +102,10 @@ const CardModal = ({ item }: Props) => {
             <div className="flex space-x-3 w-full p-2 pb-0 overflow-x-auto scrollbar-hide">
               {data?.similarMovies ? (
                 data?.similarMovies.map((movie) => (
-                  <div className="w-[92px] min-w-[92px] flex flex-col  justify-center">
+                  <div
+                    className="w-[92px] min-w-[92px] flex flex-col  justify-center"
+                    key={item.id + 'similar'}
+                  >
                     <img
                       src={'https://image.tmdb.org/t/p/w92' + movie.poster_path}
                       alt={movie.title}

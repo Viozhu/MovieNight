@@ -49,7 +49,7 @@ const Tabs = ({ data, status, title, subTitle, id }: Props) => {
                 name="chevron-thin-left"
                 color="ffffff"
                 onClick={() => sliceController('left')}
-                style="  scale-100 cursor-pointer hover:scale-150 hover:ease-in-out hover:duration-300 hover:transition"
+                style="  scale-100 cursor-pointer hover:scale-150 hover:ease-in-out hover:duration-300 hover:transition  hidden md:block"
               />
               <div
                 className={styles.CARD_CONTAINER}
@@ -57,6 +57,7 @@ const Tabs = ({ data, status, title, subTitle, id }: Props) => {
               >
                 {data.map((item) => (
                   <Card
+                    key={item.id}
                     item={item}
                     onClick={() => setCurrentItem({ item, show: true })}
                   />
@@ -66,7 +67,7 @@ const Tabs = ({ data, status, title, subTitle, id }: Props) => {
                 name="chevron-thin-right"
                 color="ffffff"
                 onClick={() => sliceController('right')}
-                style=" scale-100 cursor-pointer hover:scale-150 hover:ease-in-out hover:duration-300 hover:transition"
+                style="scale-100 cursor-pointer hover:scale-150 hover:ease-in-out hover:duration-300 hover:transition hidden md:block"
               />
             </div>
           ) : (

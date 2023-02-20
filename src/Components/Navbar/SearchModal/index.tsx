@@ -29,8 +29,9 @@ const SearchModal = ({ data }: Props) => {
           <h1 className="text-2xl text-center text-brown-1">Search results</h1>
           <div className="flex justify-center items-center space-y-3 w-full space-x-5  flex-wrap ">
             {data ? (
-              data.map((item) => (
+              data.map((item, index) => (
                 <div
+                  key={item.id + index}
                   className="w-[92px] min-w-[92px] flex flex-col justify-center"
                   onClick={() => setCurrentItem({ item: item, show: true })}
                 >

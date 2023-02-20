@@ -13,8 +13,10 @@ const SubSection = ({
   content,
   index,
 }: subSectionsTypes): JSX.Element => {
+  const isMobile: boolean = window.innerWidth < 768;
+
   const [showSubSection, setShowSubSection] = useState({
-    show: false,
+    show: !isMobile,
     index: -1,
   });
 
@@ -23,23 +25,7 @@ const SubSection = ({
       <a
         href="#"
         className={styles.A_TAG}
-        onMouseOver={() => {
-          setShowSubSection({
-            show: true,
-            index: index,
-          });
-        }}
-        onMouseOut={() => {
-          setShowSubSection({
-            show: false,
-            index: -1,
-          });
-        }}
         onClick={() => {
-          setShowSubSection({
-            show: false,
-            index: -1,
-          });
           setShowSubSection({
             show: showSubSection.show ? false : true,
             index: showSubSection.index === index ? -1 : index,

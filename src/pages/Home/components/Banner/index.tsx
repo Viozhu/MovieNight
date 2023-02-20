@@ -1,7 +1,7 @@
-import React from "react";
-import * as styles from "./styles";
-import { Icon } from "@styleComponents";
-import { Movie } from "@graphqlTypes";
+import React from 'react';
+import * as styles from './styles';
+import { Icon } from '@styleComponents';
+import { Movie } from '@graphqlTypes';
 
 type Props = {
   data: Array<Movie>;
@@ -10,7 +10,7 @@ type Props = {
 const Banner = ({ data }: Props) => {
   const scrollSmooth = (id: string) => {
     const element = document.getElementById(id);
-    element?.scrollIntoView({ behavior: "smooth" });
+    element?.scrollIntoView({ behavior: 'smooth' });
   };
   return (
     <div className={styles.BANNER_CONTAINER}>
@@ -20,8 +20,9 @@ const Banner = ({ data }: Props) => {
         <div className={styles.CARDS_BANNER}>
           {data?.slice(0, 5).map((item) => (
             <img
+              key={item.id + 'banner'}
               className="object-cover h-full rounded"
-              src={"https://image.tmdb.org/t/p/w185" + item.poster_path}
+              src={'https://image.tmdb.org/t/p/w185' + item.poster_path}
               alt="image"
               width={200}
             />
@@ -29,7 +30,7 @@ const Banner = ({ data }: Props) => {
         </div>
       </div>
       <div className={styles.BUTTON_CONTAINER}>
-        <button className={styles.BUTTON} onClick={() => scrollSmooth("conte")}>
+        <button className={styles.BUTTON} onClick={() => scrollSmooth('conte')}>
           <Icon name="arrow-down" />
         </button>
       </div>

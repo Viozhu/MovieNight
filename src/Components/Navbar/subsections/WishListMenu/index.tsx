@@ -1,9 +1,11 @@
 import { Movie } from '@graphqlTypes';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '@reduxStore';
+import { removeWishMovie } from '@reduxSlicesWish';
 import '../../styles.css';
 
 import * as styles from './styles';
+import { Dispatch } from '@reduxjs/toolkit';
 
 type Props = {};
 
@@ -11,6 +13,8 @@ const WishListMenu = (): JSX.Element => {
   const wish: Array<Movie> = useSelector(
     (state: RootState) => state.wishlist.value,
   );
+
+  const dispatch: Dispatch = useDispatch();
 
   return (
     <div className={styles.MENU_CONTAINER}>
@@ -21,7 +25,7 @@ const WishListMenu = (): JSX.Element => {
       <div className={styles.CARD_CONTAINER}>
         {wish.length > 0 ? (
           wish.map((item) => (
-            <ul className={styles.CARD}>
+            <ul className={styles.CARD} key={item.id + 'wish'}>
               <div className={styles.CARD_CONTENT} key={item.id}>
                 <img
                   src={'https://image.tmdb.org/t/p/w185' + item.poster_path}
@@ -31,6 +35,12 @@ const WishListMenu = (): JSX.Element => {
                 />
                 <div className={styles.TEXT_CONTENT}>
                   <p className="text-center ">{item.title}</p>
+                </div>
+                <div
+                  className={styles.TEXT_CONTENT_DELETE}
+                  onClick={() => dispatch(removeWishMovie(item))}
+                >
+                  <p className="text-center ">Remove</p>
                 </div>
               </div>
             </ul>

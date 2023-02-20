@@ -11,6 +11,7 @@ const StartRating = ({ vote }: Props): JSX.Element => {
       {stars.map((star: number) => {
         return (
           <svg
+            key={star + 'svg'}
             aria-hidden="true"
             className={`w-5 h-5 ${
               voteRound >= star ? 'text-yellow-400' : 'text-gray'
