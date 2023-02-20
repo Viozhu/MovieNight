@@ -34,10 +34,10 @@ const SubSection = ({
       >
         {title}
       </a>
-      {showSubSection.show && (
+      {(showSubSection.show || !isMobile) && (
         <div
           className={`${styles.LI_CHILD} ${
-            index !== showSubSection.index
+            index !== showSubSection.index || !isMobile
               ? 'mega-menu'
               : 'mega-menu-responsive'
           }`}

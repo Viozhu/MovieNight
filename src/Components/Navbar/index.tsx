@@ -71,7 +71,7 @@ export const NavBar = (): JSX.Element => {
               content={subSections[2].content}
               index={2}
             />
-            <div className=" items-center justify-center space-x-4 hidden md:flex">
+            <div className={styles.INPUT_CONTAINER}>
               <Input
                 placeholder="Search"
                 id="search"

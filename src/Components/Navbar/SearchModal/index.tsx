@@ -5,6 +5,7 @@ import { useState } from 'react';
 type Props = {
   data: Array<Movie> | [] | any;
 };
+import * as styles from './styles';
 
 const SearchModal = ({ data }: Props) => {
   const [currentItem, setCurrentItem] = useState<{
@@ -23,16 +24,16 @@ const SearchModal = ({ data }: Props) => {
   });
 
   return (
-    <div className="text-black p-4 ">
+    <div className={styles.CONTAINER}>
       {!currentItem.show ? (
         <>
-          <h1 className="text-2xl text-center text-brown-1">Search results</h1>
-          <div className="flex justify-center items-center space-y-3 w-full space-x-5  flex-wrap ">
+          <h1 className={styles.TITLE_CONTAINER}>Search results</h1>
+          <div className={styles.SEARCH_CONTAINER}>
             {data ? (
               data.map((item, index) => (
                 <div
                   key={item.id + index}
-                  className="w-[92px] min-w-[92px] flex flex-col justify-center"
+                  className={styles.CARD_CONTAINER}
                   onClick={() => setCurrentItem({ item: item, show: true })}
                 >
                   <img
@@ -40,13 +41,11 @@ const SearchModal = ({ data }: Props) => {
                     alt={item.title}
                     className="rounded"
                   />
-                  <p className="text-xs truncate text-center  mt-1">
-                    {item.title}
-                  </p>
+                  <p className={styles.CARD_TEXT}>{item.title}</p>
                 </div>
               ))
             ) : (
-              <p className="text-center my-5">No results</p>
+              <p className={styles.NO_RESULT}>No results</p>
             )}
           </div>
         </>
