@@ -16,7 +16,7 @@ type Props = {
 };
 
 const CardModal = ({ item }: Props) => {
-  const [currentItem, setcurrentItem] = useState<Movie>(item);
+  const [currentItem, setcurrentItem] = useState<Movie | any>(item);
 
   const {
     id,

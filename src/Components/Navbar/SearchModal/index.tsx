@@ -3,7 +3,7 @@ import { CardModal } from '@styleComponents';
 
 import { useState } from 'react';
 type Props = {
-  data: Array<Movie> | undefined;
+  data: Array<Movie> | Array<SearchMovieQuery['searchMovie']> | any;
 };
 import * as styles from './styles';
 
