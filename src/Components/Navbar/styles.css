@@ -8,6 +8,14 @@
   width: 100%;
 }
 
+.mega-menu-responsive {
+  display: block;
+  left: 0;
+  position: absolute;
+  text-align: left;
+  width: 100%;
+}
+
 /* #hoverable Class Styles
   –––––––––––––––––––––––––––––––––––––––––––––––––– */
 .hoverable {
@@ -16,7 +24,7 @@
 }
 
 .hoverable > a:after {
-  content: "\25BC";
+  content: '\25BC';
   font-size: 10px;
   padding-left: 6px;
   position: relative;

@@ -11,11 +11,16 @@ import { Movie } from '@graphqlTypes';
 type subSectionsTypes = {
   title: string | JSX.Element;
   content: JSX.Element;
+  index?: number;
 };
 
 export const NavBar = (): JSX.Element => {
   const [searchTerm, setSearchTerm] = useState<string>('');
   const [searchModal, setSearchModal] = useState<boolean>(false);
+  const [showSubSection, setShowSubSection] = useState({
+    show: false,
+    index: 0,
+  });
 
   const sendToTopsmothly: () => void = () => {
     window.scrollTo({
@@ -48,15 +53,36 @@ export const NavBar = (): JSX.Element => {
     },
   ];
 
-  const SubSection = ({ title, content }: subSectionsTypes): JSX.Element => (
+  const SubSection = ({
+    title,
+    content,
+    index,
+  }: subSectionsTypes): JSX.Element => (
     <li className={styles.LINKS_CONTAINER}>
-      <a href="#" className={styles.A_TAG}>
+      <a
+        href="#"
+        className={`${styles.A_TAG} ${
+          index === showSubSection.index && 'bg-brown-3 '
+        }`}
+        onClick={() => {
+          setShowSubSection({
+            show: !showSubSection.show,
+            index: showSubSection.index === index ? -1 : index,
+          });
+        }}
+      >
         {title}
       </a>
-      <div className={styles.LI_CHILD}>{content}</div>
+      <div
+        className={`${styles.LI_CHILD} ${
+          index !== showSubSection.index ? 'mega-menu' : 'mega-menu-responsive'
+        }`}
+      >
+        {content}
+      </div>
     </li>
   );
-
+  console.log(showSubSection, 'showSubSection');
   return (
     <nav className={styles.NAV_CONTAINER}>
       <div className={styles.CONTAINER}>
@@ -71,8 +97,14 @@ export const NavBar = (): JSX.Element => {
             <SubSection
               title={subSections[0].title}
               content={subSections[0].content}
+              index={0}
             />
-            <div className="flex items-center justify-center space-x-4">
+            <SubSection
+              title={subSections[2].title}
+              content={subSections[2].content}
+              index={2}
+            />
+            <div className=" items-center justify-center space-x-4 hidden md:flex">
               <Input
                 placeholder="Search"
                 id="search"
@@ -89,12 +121,9 @@ export const NavBar = (): JSX.Element => {
               />
             </div>
             <SubSection
-              title={subSections[2].title}
-              content={subSections[2].content}
-            />
-            <SubSection
               title={subSections[1].title}
               content={subSections[1].content}
+              index={1}
             />
           </ul>
         </div>
