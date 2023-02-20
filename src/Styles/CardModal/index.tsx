@@ -50,17 +50,17 @@ const CardModal = ({ item }: Props) => {
 
   const handleAddOrRemoveFavMovie = (): void => {
     if (haveFavMovie) {
-      dispatch(removeFavMovie(item));
+      dispatch(removeFavMovie(currentItem));
     } else {
-      dispatch(addFavMovie(item));
+      dispatch(addFavMovie(currentItem));
     }
   };
 
   const handleAddOrRemoveWishMovie = (): void => {
     if (haveWishMovie) {
-      dispatch(removeWishMovie(item));
+      dispatch(removeWishMovie(currentItem));
     } else {
-      dispatch(addWishMovie(item));
+      dispatch(addWishMovie(currentItem));
     }
   };
 
