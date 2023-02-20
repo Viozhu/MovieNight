@@ -98,7 +98,7 @@ export const NavBar = (): JSX.Element => {
             />
           </ul>
         </div>
-        {searchModal && (
+        {searchModal && status === 'success' && (
           <Modal
             visible={searchModal}
             onClose={() => {

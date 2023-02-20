@@ -26,13 +26,12 @@ const SearchModal = ({ data }: Props) => {
     <div className="text-black p-4 ">
       {!currentItem.show ? (
         <>
-          {' '}
           <h1 className="text-2xl text-center text-brown-1">Search results</h1>
-          <div className="flex justify-center items-center space-y-3 w-full space-x-5  flex-wrap">
+          <div className="flex justify-center items-center space-y-3 w-full space-x-5  flex-wrap ">
             {data ? (
               data.map((item) => (
                 <div
-                  className="w-[92px] flex flex-col itemx-center justify-center cursor-pointer"
+                  className="w-[92px] min-w-[92px] flex flex-col justify-center"
                   onClick={() => setCurrentItem({ item: item, show: true })}
                 >
                   <img
@@ -40,7 +39,7 @@ const SearchModal = ({ data }: Props) => {
                     alt={item.title}
                     className="rounded"
                   />
-                  <p className="text-xs truncate text-center mt-1">
+                  <p className="text-xs truncate text-center  mt-1">
                     {item.title}
                   </p>
                 </div>
