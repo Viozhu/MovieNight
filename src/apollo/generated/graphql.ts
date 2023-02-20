@@ -297,7 +297,7 @@ export type SimilarMoviesQueryVariables = Exact<{
 }>;
 
 
-export type SimilarMoviesQuery = { __typename?: 'Query', similarMovies?: Array<{ __typename?: 'Movie', title: string, poster_path?: string | null } | null> | null };
+export type SimilarMoviesQuery = { __typename?: 'Query', similarMovies?: Array<{ __typename?: 'Movie', id: number, imdb_id?: string | null, poster_path?: string | null, title: string, overview?: string | null, release_date?: string | null, runtime?: number | null, vote_average: number, production_companies?: Array<{ __typename?: 'Company', name: string } | null> | null, genres?: Array<{ __typename?: 'Genres', name: string } | null> | null } | null> | null };
 
 export type UpcomingMoviesQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -484,8 +484,20 @@ export const useSearchMovieQuery = <
 export const SimilarMoviesDocument = `
     query similarMovies($id: Int!) {
   similarMovies(id: $id) {
-    title
+    id
+    imdb_id
     poster_path
+    title
+    overview
+    release_date
+    runtime
+    vote_average
+    production_companies {
+      name
+    }
+    genres {
+      name
+    }
   }
 }
     `;

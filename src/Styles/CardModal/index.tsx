@@ -1,5 +1,6 @@
 import { Movie } from '@graphqlTypes';
 import StartRating from './StarRating';
+import { useState } from 'react';
 import dayjs from 'dayjs';
 import { addFavMovie, removeFavMovie } from '@reduxSlicesFav';
 import { addWishMovie, removeWishMovie } from '@reduxSlicesWish';
@@ -15,6 +16,8 @@ type Props = {
 };
 
 const CardModal = ({ item }: Props) => {
+  const [currentItem, setcurrentItem] = useState<Movie>(item);
+
   const {
     id,
     overview,
@@ -24,7 +27,7 @@ const CardModal = ({ item }: Props) => {
     vote_average,
     runtime,
     genres,
-  } = item;
+  } = currentItem;
 
   const { status, data } = UseSimilarMovies({
     variables: {
@@ -130,6 +133,7 @@ const CardModal = ({ item }: Props) => {
                     <div
                       className={styles.RELATED_MOVIE}
                       key={item.id + 'similar'}
+                      onClick={() => setcurrentItem(movie)}
                     >
                       <img
                         src={
@@ -140,7 +144,7 @@ const CardModal = ({ item }: Props) => {
                       />
                       <p className={styles.RELATED_MOVIE_TEXT}>{movie.title}</p>
                     </div>
-                  ))}{' '}
+                  ))}
                 </div>
                 <Icon
                   name="chevron-thin-right"

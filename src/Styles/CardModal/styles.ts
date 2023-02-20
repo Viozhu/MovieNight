@@ -23,7 +23,7 @@ export const RELATED_MOVIES =
   'flex space-x-3 w-full p-2 pb-0 overflow-x-auto scrollbar-hide';
 
 export const RELATED_MOVIE =
-  'w-[92px] min-w-[92px] flex flex-col  justify-center';
+  'w-[92px] min-w-[92px] flex flex-col  justify-center cursor-pointer ';
 
 export const RELATED_MOVIE_TEXT = 'text-xs truncate text-center mt-1';
 

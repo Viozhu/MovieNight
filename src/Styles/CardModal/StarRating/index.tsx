@@ -4,7 +4,7 @@ type Props = {
 
 const StartRating = ({ vote }: Props): JSX.Element => {
   const stars: Array<number> = [1, 2, 3, 4, 5];
-  const voteRound: number = vote / 2;
+  const voteRound: number = Math.floor(vote / 2);
 
   return (
     <div className="flex items-center">
@@ -25,7 +25,7 @@ const StartRating = ({ vote }: Props): JSX.Element => {
         );
       })}
       <p className="ml-2 text-sm font-medium text-gray-500 dark:text-gray-400">
-        {voteRound}/5.0
+        {voteRound}.0/5.0
       </p>
     </div>
   );
