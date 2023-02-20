@@ -79,7 +79,7 @@ const CardModal = ({ item }: Props) => {
   };
 
   const isMobile: boolean = window.innerWidth < 768;
-
+  console.log(item);
   return (
     <div className={styles.CONTAINER}>
       <div className={styles.IMG_CONTAINER}>
@@ -96,7 +96,7 @@ const CardModal = ({ item }: Props) => {
           <h1 className="text-4xl">{title}</h1>
           <StartRating vote={vote_average} />
         </div>
-        <p>{`${dayjs(release_date).format('DD/MM/YYYY')} | genre_ids | ${
+        <p>{`${dayjs(release_date).format('DD/MM/YYYY')} | ${
           runtime ?? '0'
         } hs`}</p>
         <p>{overview}</p>
