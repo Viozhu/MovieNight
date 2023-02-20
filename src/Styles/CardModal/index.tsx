@@ -1,5 +1,4 @@
 import { Movie } from '@graphqlTypes';
-import React from 'react';
 import StartRating from './StarRating';
 import dayjs from 'dayjs';
 import { addFavMovie, removeFavMovie } from '@reduxSlicesFav';
@@ -8,6 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from 'src/Redux';
 import { Dispatch } from '@reduxjs/toolkit';
 import UseSimilarMovies from './useGetSimilarMovies';
+import * as styles from './styles';
 
 type Props = {
   item: Movie;
@@ -63,8 +63,8 @@ const CardModal = ({ item }: Props) => {
   const isMobile: boolean = window.innerWidth < 768;
 
   return (
-    <div className="text-brown-1 p-4 flex justify-between flex-col w-full md:flex-row">
-      <div className="w-full flex justify-center items-center">
+    <div className={styles.CONTAINER}>
+      <div className={styles.IMG_CONTAINER}>
         <img
           src={
             `https://image.tmdb.org/t/p/w${isMobile ? 185 : 400}` + poster_path
@@ -73,8 +73,8 @@ const CardModal = ({ item }: Props) => {
           className="rounded "
         />
       </div>
-      <div className=" w-auto md:w-1/2  space-y-6 flex flex-col justify-around">
-        <div className="flex flex-col md:flex-row space-y-4 mt-4 md:mt-0 md:space-x-12 justify-between ">
+      <div className={styles.DESCRIPTION_CONTAINER}>
+        <div className={styles.TITLE_STAR}>
           <h1 className="text-4xl">{title}</h1>
           <StartRating vote={vote_average} />
         </div>
@@ -82,28 +82,25 @@ const CardModal = ({ item }: Props) => {
           runtime ?? '0'
         } hs`}</p>
         <p>{overview}</p>
-        <div className="flex justify-end items-center space-x-4">
+        <div className={styles.BUTTON_CONTAINER}>
           <button
-            className="bg-brown-3 text-white rounded px-4 w-52 py-2"
+            className={styles.BUTTON}
             onClick={handleAddOrRemoveWishMovie}
           >
             {haveWishMovie ? 'Remove' : 'Add'} to watchlist
           </button>
-          <button
-            className="bg-brown-3 text-white rounded px-4 w-52 py-2"
-            onClick={handleAddOrRemoveFavMovie}
-          >
+          <button className={styles.BUTTON} onClick={handleAddOrRemoveFavMovie}>
             {haveFavMovie ? 'Remove' : 'Add'} to favorites
           </button>
         </div>
-        <div className="flex flex-col mt-2 justify-between">
-          <h1 className="text-2xl">Related movies</h1>
-          <div className=" w-full md:w-[35vw]">
-            <div className="flex space-x-3 w-full p-2 pb-0 overflow-x-auto scrollbar-hide">
+        <div className={styles.RELATED_CONTAINER}>
+          <h1 className={styles.RELATED_TITLE}>Related movies</h1>
+          <div className={styles.RELATED_MOVIE_CONTAINER}>
+            <div className={styles.RELATED_MOVIES}>
               {data?.similarMovies ? (
                 data?.similarMovies.map((movie) => (
                   <div
-                    className="w-[92px] min-w-[92px] flex flex-col  justify-center"
+                    className={styles.RELATED_MOVIE}
                     key={item.id + 'similar'}
                   >
                     <img
@@ -111,13 +108,11 @@ const CardModal = ({ item }: Props) => {
                       alt={movie.title}
                       className="rounded"
                     />
-                    <p className="text-xs truncate text-center mt-1">
-                      {movie.title}
-                    </p>
+                    <p className={styles.RELATED_MOVIE_TEXT}>{movie.title}</p>
                   </div>
                 ))
               ) : (
-                <p className="text-center text-black my-5">No related movies</p>
+                <p className={styles.NO_RELATED}>No related movies</p>
               )}
             </div>
           </div>

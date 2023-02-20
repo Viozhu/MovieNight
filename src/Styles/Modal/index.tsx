@@ -24,7 +24,7 @@ const Modal = ({ visible, onClose, children, title, size = 'lg' }: Props) => {
             }
           >
             <div className={styles.MODAL_CONTENT}>
-              <div className="flex justify-end w-full ">
+              <div className={styles.BUTTON_CONTAINER}>
                 <button
                   className={styles.ICON}
                   onClick={(event) => {
@@ -40,8 +40,8 @@ const Modal = ({ visible, onClose, children, title, size = 'lg' }: Props) => {
                 <div
                   className={`${styles.TITLE_CONTAINER} ${title ? 'mb-4' : ''}`}
                 >
-                  <div className="flex flex-row items-center w-auto">
-                    <h2 className="text-xl text-black">{title}</h2>
+                  <div className={styles.TITLE_SUBCONTAINER}>
+                    <h2 className={styles.TITLE}>{title}</h2>
                   </div>
                 </div>
               )}

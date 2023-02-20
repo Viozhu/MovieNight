@@ -1,4 +1,3 @@
-//@ts-nocheck
 import { Movie } from '@graphqlTypes';
 import { useState } from 'react';
 import { Icon, Modal, CardModal } from '@styleComponents';
@@ -14,8 +13,18 @@ type Props = {
 };
 
 const Tabs = ({ data, status, title, subTitle, id }: Props) => {
-  const [currentItem, setCurrentItem] = useState<Movie | {}>({
-    item: {},
+  const [currentItem, setCurrentItem] = useState<{
+    item: Movie;
+    show: boolean;
+  }>({
+    item: {
+      id: 0,
+      title: '',
+      poster_path: '',
+      vote_average: 0,
+      release_date: '',
+      overview: '',
+    },
     show: false,
   });
 
@@ -37,19 +46,19 @@ const Tabs = ({ data, status, title, subTitle, id }: Props) => {
   };
   return (
     <>
-      <div className="flex flex-col items-center justify-center space-y-1 mt-12 mb-8">
-        <h2 className="text-4xl font-bold text-brown-3">{title}</h2>
-        <p className="text-xl text-brown-3">{subTitle}</p>
+      <div className={styles.CONTAINER}>
+        <h2 className={styles.TITLE}>{title}</h2>
+        <p className={styles.SUBTITLE}>{subTitle}</p>
       </div>
       {status === 'success' && (
-        <div className="flex justify-center items-center">
+        <div className={styles.TAB_CONTAINER}>
           {data.length > 0 ? (
-            <div className="flex justify-center space-x-5 items-center">
+            <div className={styles.ARROW_CONTAINER}>
               <Icon
                 name="chevron-thin-left"
                 color="ffffff"
                 onClick={() => sliceController('left')}
-                style="  scale-100 cursor-pointer hover:scale-150 hover:ease-in-out hover:duration-300 hover:transition  hidden md:block"
+                style={styles.ARROW}
               />
               <div
                 className={styles.CARD_CONTAINER}
@@ -67,12 +76,12 @@ const Tabs = ({ data, status, title, subTitle, id }: Props) => {
                 name="chevron-thin-right"
                 color="ffffff"
                 onClick={() => sliceController('right')}
-                style="scale-100 cursor-pointer hover:scale-150 hover:ease-in-out hover:duration-300 hover:transition hidden md:block"
+                style={styles.ARROW}
               />
             </div>
           ) : (
-            <div className="h-24 flex items-center justify-center w-full">
-              <p className="text-center text-2xl">No movies added yet 😭</p>
+            <div className={styles.NO_MOVIES}>
+              <p className={styles.NO_MOVIES_TEXT}>No movies added yet 😭</p>
             </div>
           )}
         </div>
@@ -82,7 +91,17 @@ const Tabs = ({ data, status, title, subTitle, id }: Props) => {
         <Modal
           visible={currentItem.show}
           onClose={() => {
-            setCurrentItem({ item: {}, show: false });
+            setCurrentItem({
+              item: {
+                id: 0,
+                title: '',
+                poster_path: '',
+                vote_average: 0,
+                release_date: '',
+                overview: '',
+              },
+              show: false,
+            });
           }}
         >
           <CardModal item={currentItem.item} />

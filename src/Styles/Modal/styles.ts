@@ -12,3 +12,9 @@ export const TITLE_CONTAINER =
 
 export const ICON =
   'flex w-10 h-10 items-center justify-end bg-transparent cursor-pointer rounded-full focus:outline-none hover:bg-gray-6 p-2';
+
+export const TITLE_SUBCONTAINER = 'flex flex-row items-center w-auto';
+
+export const TITLE = 'text-xl text-black';
+
+export const BUTTON_CONTAINER = 'flex justify-end w-full ';
