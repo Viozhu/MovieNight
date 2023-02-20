@@ -23,7 +23,7 @@
       "@styleComponents": ["src/Styles/index.ts"],
       "@reduxStore": ["src/Redux/store.ts"],
       "@reduxSlicesFav": ["src/Redux/counters/counterFav.ts"],
-      "@reduxSlicesWish": ["/src/Redux/counters/counterWishlist.ts"]
+      "@reduxSlicesWish": ["src/Redux/counters/counterWishlist.ts"]
     }
   },
   "include": ["src/**/*"],
