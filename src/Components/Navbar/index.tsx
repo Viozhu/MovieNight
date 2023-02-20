@@ -1,12 +1,11 @@
 import { Icon, Input, Modal } from '@styleComponents';
 import * as styles from './styles';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Logo from '../../assets/logo.png';
 import './styles.css';
 import { Info, FavoritesMenu, WishListMenu } from './subsections';
 import UseSearchMovie from './graphql/queries/useSearchMovie';
 import SearchModal from './SearchModal';
-import { Movie } from '@graphqlTypes';
 import SubSection from './SubSection';
 
 type subSectionsTypes = {

@@ -1,25 +1,18 @@
-import { Movie } from '@graphqlTypes';
+import { Movie, SearchMovieQuery } from '@graphqlTypes';
 import { CardModal } from '@styleComponents';
 
 import { useState } from 'react';
 type Props = {
-  data: Array<Movie> | [] | any;
+  data: SearchMovieQuery['searchMovie'] | undefined;
 };
 import * as styles from './styles';
 
 const SearchModal = ({ data }: Props) => {
   const [currentItem, setCurrentItem] = useState<{
-    item: Movie;
+    item: any;
     show: boolean;
   }>({
-    item: {
-      id: 0,
-      title: '',
-      poster_path: '',
-      vote_average: 0,
-      release_date: '',
-      overview: '',
-    },
+    item: {},
     show: false,
   });
 

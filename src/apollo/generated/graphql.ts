@@ -290,7 +290,7 @@ export type SearchMovieQueryVariables = Exact<{
 }>;
 
 
-export type SearchMovieQuery = { __typename?: 'Query', searchMovie?: Array<{ __typename?: 'Movie', id: number, poster_path?: string | null, title: string, overview?: string | null, vote_average: number, genres?: Array<{ __typename?: 'Genres', name: string } | null> | null } | null> | null };
+export type SearchMovieQuery = { __typename?: 'Query', searchMovie?: Array<{ __typename?: 'Movie', id: number, imdb_id?: string | null, poster_path?: string | null, title: string, overview?: string | null, release_date?: string | null, runtime?: number | null, vote_average: number, production_companies?: Array<{ __typename?: 'Company', name: string } | null> | null, genres?: Array<{ __typename?: 'Genres', name: string } | null> | null } | null> | null };
 
 export type SimilarMoviesQueryVariables = Exact<{
   id: Scalars['Int'];
@@ -451,10 +451,16 @@ export const SearchMovieDocument = `
     query searchMovie($term: String!) {
   searchMovie(term: $term) {
     id
+    imdb_id
     poster_path
     title
     overview
+    release_date
+    runtime
     vote_average
+    production_companies {
+      name
+    }
     genres {
       name
     }

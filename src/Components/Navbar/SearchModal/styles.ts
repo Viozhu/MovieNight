@@ -1,6 +1,6 @@
 export const CONTAINER = 'text-black p-4 ';
 
-export const TITLE_CONTAINER = 'text-2xl text-center text-brown-1';
+export const TITLE_CONTAINER = 'text-3xl text-bold text-center text-brown-1';
 
 export const SEARCH_CONTAINER =
   'flex justify-center items-center space-y-3 w-full space-x-5  flex-wrap ';
