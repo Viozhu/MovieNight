@@ -1,6 +1,6 @@
-import { createSlice } from "@reduxjs/toolkit";
-import type { PayloadAction } from "@reduxjs/toolkit";
-import { Movie } from "@graphqlTypes";
+import { createSlice } from '@reduxjs/toolkit';
+import type { PayloadAction } from '@reduxjs/toolkit';
+import { Movie } from '@graphqlTypes';
 
 export interface CounterState {
   value: Array<Movie>;
@@ -11,7 +11,7 @@ const initialState: CounterState = {
 };
 
 export const favoriteSlice = createSlice({
-  name: "favorite",
+  name: 'favorite',
   initialState,
   reducers: {
     addFavMovie: (state, action: PayloadAction<Movie>) => {

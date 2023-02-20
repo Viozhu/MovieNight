@@ -1,6 +1,6 @@
-import { configureStore } from "@reduxjs/toolkit";
-import counterSlice from "./counterFav";
-import counterWishlist from "./counterWishlist";
+import { configureStore } from '@reduxjs/toolkit';
+import counterSlice from './counters/counterFav';
+import counterWishlist from './counters/counterWishlist';
 
 export const store = configureStore({
   reducer: {

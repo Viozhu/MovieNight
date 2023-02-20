@@ -1,8 +1,8 @@
-import { useSelector, useDispatch } from "react-redux";
-import { RootState } from "@redux/store";
-import "../../styles.css";
+import { useSelector, useDispatch } from 'react-redux';
+import { RootState } from '@reduxStore';
+import '../../styles.css';
 
-import * as styles from "./styles";
+import * as styles from './styles';
 
 type Props = {};
 
@@ -21,7 +21,7 @@ const FavoritesMenu = () => {
             <ul className={styles.CARD}>
               <div className={styles.CARD_CONTENT} key={item.id}>
                 <img
-                  src={"https://image.tmdb.org/t/p/w185" + item.poster_path}
+                  src={'https://image.tmdb.org/t/p/w185' + item.poster_path}
                   className="rounded-t"
                   alt="image"
                   width={200}

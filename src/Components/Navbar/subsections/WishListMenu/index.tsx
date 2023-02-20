@@ -1,15 +1,15 @@
-import { Movie } from "@graphqlTypes";
-import { useSelector, useDispatch } from "react-redux";
-import { RootState } from "@redux/store";
-import "../../styles.css";
+import { Movie } from '@graphqlTypes';
+import { useSelector, useDispatch } from 'react-redux';
+import { RootState } from '@reduxStore';
+import '../../styles.css';
 
-import * as styles from "./styles";
+import * as styles from './styles';
 
 type Props = {};
 
 const WishListMenu = (): JSX.Element => {
   const wish: Array<Movie> = useSelector(
-    (state: RootState) => state.wishlist.value
+    (state: RootState) => state.wishlist.value,
   );
 
   return (
@@ -24,7 +24,7 @@ const WishListMenu = (): JSX.Element => {
             <ul className={styles.CARD}>
               <div className={styles.CARD_CONTENT} key={item.id}>
                 <img
-                  src={"https://image.tmdb.org/t/p/w185" + item.poster_path}
+                  src={'https://image.tmdb.org/t/p/w185' + item.poster_path}
                   className="rounded-t"
                   alt="image"
                   width={200}
