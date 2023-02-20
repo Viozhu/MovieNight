@@ -117,7 +117,7 @@ const CardModal = ({ item }: Props) => {
                   </div>
                 ))
               ) : (
-                <p className="text-center my-5">No related movies</p>
+                <p className="text-center text-black my-5">No related movies</p>
               )}
             </div>
           </div>
