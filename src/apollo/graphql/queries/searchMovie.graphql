@@ -1,0 +1,12 @@
+query searchMovie($term: String!) {
+  searchMovie(term: $term) {
+    id
+    poster_path
+    title
+    overview
+    vote_average
+    genres {
+      name
+    }
+  }
+}

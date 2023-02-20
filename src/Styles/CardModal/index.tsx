@@ -7,7 +7,7 @@ import { addWishMovie, removeWishMovie } from '@reduxSlicesWish';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from 'src/Redux';
 import { Dispatch } from '@reduxjs/toolkit';
-import UseSimilarMovies from '../../graphql/queries/useGetSimilarMovies';
+import UseSimilarMovies from './useGetSimilarMovies';
 
 type Props = {
   item: Movie;
@@ -61,7 +61,7 @@ const CardModal = ({ item }: Props) => {
   };
 
   const isMobile: boolean = window.innerWidth < 768;
-  console.log(item);
+
   return (
     <div className="text-brown-1 p-4 flex justify-between flex-col w-full md:flex-row">
       <div className="w-full flex justify-center items-center">

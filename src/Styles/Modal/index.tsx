@@ -6,9 +6,10 @@ type Props = {
   onClose: () => void;
   children: JSX.Element;
   title?: string;
+  size?: 'sm' | 'lg';
 };
 
-const Modal = ({ visible, onClose, children, title }: Props) => {
+const Modal = ({ visible, onClose, children, title, size = 'lg' }: Props) => {
   return (
     <>
       {visible && (
@@ -16,7 +17,12 @@ const Modal = ({ visible, onClose, children, title }: Props) => {
           className={styles.MODAL_CONTAINER}
           style={{ maxHeight: '100vh', overflowY: 'auto' }}
         >
-          <div className={styles.INNER_CONTENT}>
+          <div
+            className={
+              styles.INNER_CONTENT +
+              `${size === 'sm' ? 'w-full md:w-1/2' : ' w-full md:w-3/4 '}`
+            }
+          >
             <div className={styles.MODAL_CONTENT}>
               <div className="flex justify-end w-full ">
                 <button

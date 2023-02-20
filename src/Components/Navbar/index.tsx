@@ -1,8 +1,12 @@
-import { Icon, Input } from "@styleComponents";
-import * as styles from "./styles";
-import Logo from "../../assets/logo.png";
-import "./styles.css";
-import { Info, FavoritesMenu, WishListMenu } from "./subsections";
+import { Icon, Input, Modal } from '@styleComponents';
+import * as styles from './styles';
+import { useState } from 'react';
+import Logo from '../../assets/logo.png';
+import './styles.css';
+import { Info, FavoritesMenu, WishListMenu } from './subsections';
+import UseSearchMovie from './graphql/queries/useSearchMovie';
+import SearchModal from './SearchModal';
+import { Movie } from '@graphqlTypes';
 
 type subSectionsTypes = {
   title: string | JSX.Element;
@@ -10,12 +14,24 @@ type subSectionsTypes = {
 };
 
 export const NavBar = (): JSX.Element => {
+  const [searchTerm, setSearchTerm] = useState<string>('');
+  const [searchModal, setSearchModal] = useState<boolean>(false);
+
   const sendToTopsmothly: () => void = () => {
     window.scrollTo({
       top: 0,
-      behavior: "smooth",
+      behavior: 'smooth',
     });
   };
+
+  const onSearch = () => {
+    setTimeout(() => setSearchModal(true), 500);
+  };
+
+  const { data, status, error, refetch } = UseSearchMovie({
+    variables: { term: searchTerm },
+    enabled: searchModal && searchTerm.length > 2,
+  });
 
   const subSections: Array<subSectionsTypes> = [
     {
@@ -23,7 +39,7 @@ export const NavBar = (): JSX.Element => {
       content: <FavoritesMenu />,
     },
     {
-      title: "Info",
+      title: 'Info',
       content: <Info />,
     },
     {
@@ -57,8 +73,20 @@ export const NavBar = (): JSX.Element => {
               content={subSections[0].content}
             />
             <div className="flex items-center justify-center space-x-4">
-              <Icon name="magnifying-glass" size={24} color="D9BDAB" />
-              <Input placeholder="Search" id="search" />
+              <Input
+                placeholder="Search"
+                id="search"
+                onChange={(e) => setSearchTerm(e.target.value)}
+                onKeyPress={onSearch}
+                value={searchTerm}
+              />
+              <Icon
+                name="magnifying-glass"
+                size={24}
+                color="D9BDAB"
+                style="cursor-pointer"
+                onClick={onSearch}
+              />
             </div>
             <SubSection
               title={subSections[2].title}
@@ -70,6 +98,16 @@ export const NavBar = (): JSX.Element => {
             />
           </ul>
         </div>
+        {searchModal && (
+          <Modal
+            visible={searchModal}
+            onClose={() => {
+              setSearchModal(!searchModal), setSearchTerm('');
+            }}
+          >
+            <SearchModal data={data?.searchMovie} />
+          </Modal>
+        )}
       </div>
     </nav>
   );

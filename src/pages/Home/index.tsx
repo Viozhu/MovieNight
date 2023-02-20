@@ -36,24 +36,28 @@ function Home() {
 
       <Tabs
         data={moviesList.upcomingMovies}
+        id={'upcomingMovies'}
         status={status}
         title="Upcoming Movies"
         subTitle="These are the upcoming releases."
       />
       <Tabs
         data={moviesList.popularMovies}
+        id={'popularMovies'}
         status={status}
         title="Trending now"
         subTitle="These are the most popular movies"
       />
       <Tabs
         data={moviesList.nowPlayingMovies}
+        id={'nowPlayingMovies'}
         status={status}
         title="Now playing Movies"
         subTitle="These are the movies that are currently playing in theaters."
       />
       <Tabs
         data={moviesList.popularMovies}
+        id={'popularMovies2'}
         status={status}
         title="Top Picks for you"
         subTitle="These are the most popular movies"

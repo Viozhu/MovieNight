@@ -1,4 +1,3 @@
-//@ts-nocheck
 import { GraphQLClient } from 'graphql-request';
 import { RequestInit } from 'graphql-request/dist/types.dom';
 import { useQuery, UseQueryOptions } from '@tanstack/react-query';
@@ -285,6 +284,13 @@ export type PopularMoviesQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type PopularMoviesQuery = { __typename?: 'Query', popularMovies: Array<{ __typename?: 'Movie', id: number, poster_path?: string | null, title: string, vote_average: number, runtime?: number | null, overview?: string | null, production_companies?: Array<{ __typename?: 'Company', name: string, logo_path?: string | null, origin_country?: string | null } | null> | null, videos?: { __typename?: 'VideoResults', results?: Array<{ __typename?: 'Video', site: string, key: string, type: string } | null> | null } | null } | null> };
 
+export type SearchMovieQueryVariables = Exact<{
+  term: Scalars['String'];
+}>;
+
+
+export type SearchMovieQuery = { __typename?: 'Query', searchMovie?: Array<{ __typename?: 'Movie', id: number, poster_path?: string | null, title: string, overview?: string | null, vote_average: number, genres?: Array<{ __typename?: 'Genres', name: string } | null> | null } | null> | null };
+
 export type SimilarMoviesQueryVariables = Exact<{
   id: Scalars['Int'];
 }>;
@@ -438,6 +444,34 @@ export const usePopularMoviesQuery = <
     useQuery<PopularMoviesQuery, TError, TData>(
       variables === undefined ? ['popularMovies'] : ['popularMovies', variables],
       fetcher<PopularMoviesQuery, PopularMoviesQueryVariables>(client, PopularMoviesDocument, variables, headers),
+      options
+    );
+export const SearchMovieDocument = `
+    query searchMovie($term: String!) {
+  searchMovie(term: $term) {
+    id
+    poster_path
+    title
+    overview
+    vote_average
+    genres {
+      name
+    }
+  }
+}
+    `;
+export const useSearchMovieQuery = <
+      TData = SearchMovieQuery,
+      TError = unknown
+    >(
+      client: GraphQLClient,
+      variables: SearchMovieQueryVariables,
+      options?: UseQueryOptions<SearchMovieQuery, TError, TData>,
+      headers?: RequestInit['headers']
+    ) =>
+    useQuery<SearchMovieQuery, TError, TData>(
+      ['searchMovie', variables],
+      fetcher<SearchMovieQuery, SearchMovieQueryVariables>(client, SearchMovieDocument, variables, headers),
       options
     );
 export const SimilarMoviesDocument = `

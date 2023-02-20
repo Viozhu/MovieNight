@@ -13,7 +13,7 @@ const StartRating = ({ vote }: Props): JSX.Element => {
           <svg
             aria-hidden="true"
             className={`w-5 h-5 ${
-              voteRound >= star ? "text-yellow-400" : "text-gray"
+              voteRound >= star ? 'text-yellow-400' : 'text-gray'
             }`}
             fill="currentColor"
             viewBox="0 0 20 20"

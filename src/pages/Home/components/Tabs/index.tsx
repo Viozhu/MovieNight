@@ -1,37 +1,37 @@
 //@ts-nocheck
-import { Movie } from "@graphqlTypes";
-import { useState } from "react";
-import { Icon, Modal } from "@styleComponents";
-import Card from "../Card";
-import * as styles from "./styles";
-import CardModal from "../CardModal";
+import { Movie } from '@graphqlTypes';
+import { useState } from 'react';
+import { Icon, Modal, CardModal } from '@styleComponents';
+import Card from '../Card';
+import * as styles from './styles';
 
 type Props = {
   data: Array<Movie>;
   status: string;
   title: string;
   subTitle: string;
+  id: string;
 };
 
-const Tabs = ({ data, status, title, subTitle }: Props) => {
+const Tabs = ({ data, status, title, subTitle, id }: Props) => {
   const [currentItem, setCurrentItem] = useState<Movie | {}>({
     item: {},
     show: false,
   });
 
   const sliceController = (direction: string) => {
-    const contenedor = document.getElementById("sliceContenedor");
+    const contenedor = document.getElementById(`sliceContenedor + ${id}`);
     const scrollOffset = 600;
 
-    if (direction === "left") {
+    if (direction === 'left') {
       contenedor.scrollTo({
         left: contenedor.scrollLeft - scrollOffset,
-        behavior: "smooth",
+        behavior: 'smooth',
       });
     } else {
       contenedor.scrollTo({
         left: contenedor.scrollLeft + scrollOffset,
-        behavior: "smooth",
+        behavior: 'smooth',
       });
     }
   };
@@ -41,17 +41,20 @@ const Tabs = ({ data, status, title, subTitle }: Props) => {
         <h2 className="text-4xl font-bold text-brown-3">{title}</h2>
         <p className="text-xl text-brown-3">{subTitle}</p>
       </div>
-      {status === "success" && (
+      {status === 'success' && (
         <div className="flex justify-center items-center">
           {data.length > 0 ? (
             <div className="flex justify-center space-x-5 items-center">
               <Icon
                 name="chevron-thin-left"
                 color="ffffff"
-                onClick={() => sliceController("left")}
+                onClick={() => sliceController('left')}
                 style="  scale-100 cursor-pointer hover:scale-150 hover:ease-in-out hover:duration-300 hover:transition"
               />
-              <div className={styles.CARD_CONTAINER} id="sliceContenedor">
+              <div
+                className={styles.CARD_CONTAINER}
+                id={`sliceContenedor + ${id}`}
+              >
                 {data.map((item) => (
                   <Card
                     item={item}
@@ -62,7 +65,7 @@ const Tabs = ({ data, status, title, subTitle }: Props) => {
               <Icon
                 name="chevron-thin-right"
                 color="ffffff"
-                onClick={() => sliceController("right")}
+                onClick={() => sliceController('right')}
                 style=" scale-100 cursor-pointer hover:scale-150 hover:ease-in-out hover:duration-300 hover:transition"
               />
             </div>
@@ -74,13 +77,16 @@ const Tabs = ({ data, status, title, subTitle }: Props) => {
         </div>
       )}
 
-      <Modal
-        visible={currentItem.show}
-        onClose={() => {
-          setCurrentItem({ item: {}, show: false });
-        }}
-        children={<CardModal item={currentItem.item} />}
-      />
+      {currentItem.show && (
+        <Modal
+          visible={currentItem.show}
+          onClose={() => {
+            setCurrentItem({ item: {}, show: false });
+          }}
+        >
+          <CardModal item={currentItem.item} />
+        </Modal>
+      )}
     </>
   );
 };
