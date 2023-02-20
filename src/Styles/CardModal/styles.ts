@@ -7,7 +7,7 @@ export const DESCRIPTION_CONTAINER =
   ' w-auto md:w-1/2  space-y-6 flex flex-col justify-around';
 
 export const TITLE_STAR =
-  'flex flex-col md:flex-row space-y-4 mt-4 md:mt-0 md:space-x-12 justify-between ';
+  'flex flex-col md:flex-row space-y-4 mt-4 md:mt-0 md:space-x-12 justify-between font-bold ';
 
 export const BUTTON_CONTAINER = 'flex justify-end items-center space-x-4';
 
@@ -15,7 +15,7 @@ export const BUTTON = 'bg-brown-3 text-white rounded px-4 w-52 py-2';
 
 export const RELATED_CONTAINER = 'flex flex-col mt-2 justify-between';
 
-export const RELATED_TITLE = 'text-2xl';
+export const RELATED_TITLE = 'text-2xl font-bold ';
 
 export const RELATED_MOVIE_CONTAINER = ' w-full md:w-[35vw]';
 
@@ -28,3 +28,8 @@ export const RELATED_MOVIE =
 export const RELATED_MOVIE_TEXT = 'text-xs truncate text-center mt-1';
 
 export const NO_RELATED = 'text-center text-black my-5';
+
+export const ARROW_CONTAINER = 'flex w-full space-x-5 items-center';
+
+export const ARROW =
+  'scale-100 cursor-pointer hover:scale-150 hover:ease-in-out hover:duration-300 hover:transition  hidden md:block';

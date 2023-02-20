@@ -8,6 +8,7 @@ import { RootState } from 'src/Redux';
 import { Dispatch } from '@reduxjs/toolkit';
 import UseSimilarMovies from './useGetSimilarMovies';
 import * as styles from './styles';
+import Icon from '../Icon';
 
 type Props = {
   item: Movie;
@@ -60,6 +61,23 @@ const CardModal = ({ item }: Props) => {
     }
   };
 
+  const sliceController = (direction: string) => {
+    const contenedor = document.getElementById(`sliceContenedorRelated`);
+    const scrollOffset = 600;
+
+    if (direction === 'left') {
+      contenedor.scrollTo({
+        left: contenedor.scrollLeft - scrollOffset,
+        behavior: 'smooth',
+      });
+    } else {
+      contenedor.scrollTo({
+        left: contenedor.scrollLeft + scrollOffset,
+        behavior: 'smooth',
+      });
+    }
+  };
+
   const isMobile: boolean = window.innerWidth < 768;
 
   return (
@@ -96,25 +114,44 @@ const CardModal = ({ item }: Props) => {
         <div className={styles.RELATED_CONTAINER}>
           <h1 className={styles.RELATED_TITLE}>Related movies</h1>
           <div className={styles.RELATED_MOVIE_CONTAINER}>
-            <div className={styles.RELATED_MOVIES}>
-              {data?.similarMovies ? (
-                data?.similarMovies.map((movie) => (
-                  <div
-                    className={styles.RELATED_MOVIE}
-                    key={item.id + 'similar'}
-                  >
-                    <img
-                      src={'https://image.tmdb.org/t/p/w92' + movie.poster_path}
-                      alt={movie.title}
-                      className="rounded"
-                    />
-                    <p className={styles.RELATED_MOVIE_TEXT}>{movie.title}</p>
-                  </div>
-                ))
-              ) : (
-                <p className={styles.NO_RELATED}>No related movies</p>
-              )}
-            </div>
+            {data?.similarMovies?.length > 0 ? (
+              <div className={styles.ARROW_CONTAINER}>
+                <Icon
+                  name="chevron-thin-left"
+                  color="8B7C6E"
+                  onClick={() => sliceController('left')}
+                  style={styles.ARROW}
+                />
+                <div
+                  className={styles.RELATED_MOVIES}
+                  id={`sliceContenedorRelated`}
+                >
+                  {data?.similarMovies.map((movie) => (
+                    <div
+                      className={styles.RELATED_MOVIE}
+                      key={item.id + 'similar'}
+                    >
+                      <img
+                        src={
+                          'https://image.tmdb.org/t/p/w92' + movie.poster_path
+                        }
+                        alt={movie.title}
+                        className="rounded"
+                      />
+                      <p className={styles.RELATED_MOVIE_TEXT}>{movie.title}</p>
+                    </div>
+                  ))}{' '}
+                </div>
+                <Icon
+                  name="chevron-thin-right"
+                  color="8B7C6E"
+                  onClick={() => sliceController('right')}
+                  style={styles.ARROW}
+                />
+              </div>
+            ) : (
+              <p className={styles.NO_RELATED}>No related movies</p>
+            )}
           </div>
         </div>
       </div>
