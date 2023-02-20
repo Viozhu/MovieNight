@@ -23,6 +23,18 @@ const SubSection = ({
       <a
         href="#"
         className={styles.A_TAG}
+        onMouseOver={() => {
+          setShowSubSection({
+            show: true,
+            index: index,
+          });
+        }}
+        onMouseOut={() => {
+          setShowSubSection({
+            show: false,
+            index: -1,
+          });
+        }}
         onClick={() => {
           setShowSubSection({
             show: false,
