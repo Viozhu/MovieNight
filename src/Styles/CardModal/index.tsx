@@ -82,7 +82,7 @@ const CardModal = ({ item }: Props) => {
   };
 
   const isMobile: boolean = window.innerWidth < 768;
-  console.log(item);
+
   return (
     <div className={styles.CONTAINER}>
       <div className={styles.IMG_CONTAINER}>
