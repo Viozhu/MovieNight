@@ -1,13 +1,27 @@
-import data from './graphql/queries/fakePopularMovies.json';
-
+import { useState, useEffect } from 'react';
 import * as styles from './styles';
 
 import { Tabs } from './components';
 import Banner from './components/Banner';
-import UsePopularMovies from './graphql/queries/usePopularMovies';
+import useGetAllMovies from './graphql/queries/useGetAllMovies';
 
 function Home() {
-  const { status, data: dataTest, error, refetch } = UsePopularMovies({});
+  const [moviesList, setMoviesList] = useState({
+    popularMovies: [],
+    upcomingMovies: [],
+    nowPlayingMovies: [],
+  });
+  const { status, data } = useGetAllMovies({});
+
+  useEffect(() => {
+    if (status === 'success' && data) {
+      setMoviesList({
+        popularMovies: data.popularMovies,
+        upcomingMovies: data.upcomingMovies,
+        nowPlayingMovies: data.nowPlayingMovies,
+      });
+    }
+  }, [status, data]);
 
   return (
     <div>
@@ -17,29 +31,29 @@ function Home() {
           alt="image"
           className={styles.BANNER_IMG}
         />
-        <Banner data={data?.data.popularMovies} />
+        <Banner data={moviesList.upcomingMovies} />
       </div>
 
       <Tabs
-        data={data?.data.popularMovies}
+        data={moviesList.upcomingMovies}
         status={status}
         title="Upcoming Movies"
         subTitle="These are the upcoming releases."
       />
       <Tabs
-        data={data?.data.popularMovies}
+        data={moviesList.popularMovies}
         status={status}
         title="Trending now"
         subTitle="These are the most popular movies"
       />
       <Tabs
-        data={data?.data.popularMovies}
+        data={moviesList.nowPlayingMovies}
         status={status}
         title="Now playing Movies"
         subTitle="These are the movies that are currently playing in theaters."
       />
       <Tabs
-        data={data?.data.popularMovies}
+        data={moviesList.popularMovies}
         status={status}
         title="Top Picks for you"
         subTitle="These are the most popular movies"

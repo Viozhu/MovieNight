@@ -17,11 +17,10 @@ export const useGeneratedQuery = <TData, TError, TVariables, TQuery>(
       `;
 
       const client_ = new GraphQLClient(endpoint, {
-        credentials: 'include',
         headers: {
           Authorization: `Bearer ${API_KEY}`,
           'Access-Control-Allow-Origin': '*',
-          'Content-Type': 'application/json',
+          'Content-Type': 'application/json;charset=utf-8',
         },
       });
       try {
