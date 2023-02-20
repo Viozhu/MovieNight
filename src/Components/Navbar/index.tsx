@@ -7,6 +7,7 @@ import { Info, FavoritesMenu, WishListMenu } from './subsections';
 import UseSearchMovie from './graphql/queries/useSearchMovie';
 import SearchModal from './SearchModal';
 import { Movie } from '@graphqlTypes';
+import SubSection from './SubSection';
 
 type subSectionsTypes = {
   title: string | JSX.Element;
@@ -17,10 +18,6 @@ type subSectionsTypes = {
 export const NavBar = (): JSX.Element => {
   const [searchTerm, setSearchTerm] = useState<string>('');
   const [searchModal, setSearchModal] = useState<boolean>(false);
-  const [showSubSection, setShowSubSection] = useState({
-    show: false,
-    index: 0,
-  });
 
   const sendToTopsmothly: () => void = () => {
     window.scrollTo({
@@ -53,36 +50,6 @@ export const NavBar = (): JSX.Element => {
     },
   ];
 
-  const SubSection = ({
-    title,
-    content,
-    index,
-  }: subSectionsTypes): JSX.Element => (
-    <li className={styles.LINKS_CONTAINER}>
-      <a
-        href="#"
-        className={`${styles.A_TAG} ${
-          index === showSubSection.index && 'bg-brown-3 '
-        }`}
-        onClick={() => {
-          setShowSubSection({
-            show: !showSubSection.show,
-            index: showSubSection.index === index ? -1 : index,
-          });
-        }}
-      >
-        {title}
-      </a>
-      <div
-        className={`${styles.LI_CHILD} ${
-          index !== showSubSection.index ? 'mega-menu' : 'mega-menu-responsive'
-        }`}
-      >
-        {content}
-      </div>
-    </li>
-  );
-  console.log(showSubSection, 'showSubSection');
   return (
     <nav className={styles.NAV_CONTAINER}>
       <div className={styles.CONTAINER}>
