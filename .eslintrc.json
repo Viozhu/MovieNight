@@ -22,7 +22,6 @@
   "rules": {
     "react/react-in-jsx-scope": "off",
     "camelcase": "off",
-    "arrow-body-style": ["error", "always"],
     "spaced-comment": "error",
     "quotes": ["error", "single"],
     "no-duplicate-imports": "error"
