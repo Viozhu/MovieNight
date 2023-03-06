@@ -11,7 +11,7 @@ specifiers:
   '@reduxjs/toolkit': ^1.9.2
   '@tanstack/react-query': ^4.24.6
   '@types/dotenv': ^8.2.0
-  '@types/node': '>=18.0.6 <19.0.0'
+  '@types/node': ^18.13.0
   '@types/react': ^18.0.27
   '@types/react-dom': ^18.0.10
   '@typescript-eslint/eslint-plugin': ^5.54.0
@@ -56,7 +56,6 @@ dependencies:
   '@reduxjs/toolkit': 1.9.2_k4ae6lp43ej6mezo3ztvx6pykq
   '@tanstack/react-query': 4.24.6_biqbaboplfbrettd7655fr4n2y
   '@types/dotenv': 8.2.0
-  '@types/node': 18.13.0
   dayjs: 1.11.7
   dotenv: 16.0.3
   eslint-config-airbnb: 19.0.4_hbw3smywoiafix46yjc35xsaqq
@@ -80,6 +79,7 @@ devDependencies:
   '@graphql-codegen/client-preset': 2.0.0_graphql@16.6.0
   '@graphql-codegen/typescript-graphql-request': 4.5.8_mvbpkrlomotgouznb4aiye7i74
   '@graphql-codegen/typescript-react-query': 4.1.0_graphql@16.6.0
+  '@types/node': 18.13.0
   '@types/react': 18.0.28
   '@types/react-dom': 18.0.11
   '@typescript-eslint/eslint-plugin': 5.54.0_ahikjgb5ledr2kqpsqofz2bgzy
@@ -1873,6 +1873,7 @@ packages:
 
   /@types/node/18.13.0:
     resolution: {integrity: sha512-gC3TazRzGoOnoKAhUx+Q0t8S9Tzs74z7m0ipwGpSqQrleP14hKxP4/JUeEQcD3W1/aIpnWl8pHowI7WokuZpXg==}
+    dev: true
 
   /@types/parse-json/4.0.0:
     resolution: {integrity: sha512-//oorEZjL6sbPcKUaCdIGlIUeH26mgzimjBB77G6XRgnDl/L5wOnpyBGRe/Mmf5CVW3PwEBE1NjiMZ/ssFh4wA==}

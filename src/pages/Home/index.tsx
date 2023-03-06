@@ -11,7 +11,7 @@ function Home() {
     upcomingMovies: [],
     nowPlayingMovies: [],
   })
-  const { status, data } = useGetAllMovies({})
+  const { status, data } = useGetAllMovies()
 
   useEffect(() => {
     if (status === 'success' && data) {
