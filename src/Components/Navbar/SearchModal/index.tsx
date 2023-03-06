@@ -1,16 +1,17 @@
-import { Movie, SearchMovieQuery } from '@graphqlTypes';
-import { CardModal } from '@styleComponents';
+import { Movie, SearchMovieQuery } from '@graphqlTypes'
+import { CardModal } from '@styleComponents'
 
-import { useState } from 'react';
+import { useState } from 'react'
+import * as styles from './styles'
+
 type Props = {
-  data: Array<Movie> | Array<SearchMovieQuery['searchMovie']> | any;
-};
-import * as styles from './styles';
+  data: Array<Movie> | Array<SearchMovieQuery['searchMovie']> | any
+}
 
 const SearchModal = ({ data }: Props) => {
   const [currentItem, setCurrentItem] = useState<{
-    item: Movie;
-    show: boolean;
+    item: Movie
+    show: boolean
   }>({
     item: {
       id: 0,
@@ -21,7 +22,7 @@ const SearchModal = ({ data }: Props) => {
       overview: '',
     },
     show: false,
-  });
+  })
 
   return (
     <div className={styles.CONTAINER}>
@@ -34,12 +35,12 @@ const SearchModal = ({ data }: Props) => {
                 <div
                   key={item.id + index}
                   className={styles.CARD_CONTAINER}
-                  onClick={() => setCurrentItem({ item: item, show: true })}
+                  onClick={() => setCurrentItem({ item, show: true })}
                 >
                   <img
-                    src={'https://image.tmdb.org/t/p/w92' + item.poster_path}
+                    src={`https://image.tmdb.org/t/p/w92${item.poster_path}`}
                     alt={item.title}
-                    className="rounded"
+                    className='rounded'
                   />
                   <p className={styles.CARD_TEXT}>{item.title}</p>
                 </div>
@@ -53,7 +54,7 @@ const SearchModal = ({ data }: Props) => {
         <CardModal item={currentItem.item} />
       )}
     </div>
-  );
-};
+  )
+}
 
-export default SearchModal;
+export default SearchModal

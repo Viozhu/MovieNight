@@ -1,40 +1,40 @@
-import { useState } from "react";
+import { useState } from 'react'
 
 type Props = {
-  name: string;
-  size?: number;
-  color?: string;
-  hover?: boolean;
-  onClick?: () => void;
-  style?: string;
-};
+  name: string
+  size?: number
+  color?: string
+  hover?: boolean
+  onClick?: () => void
+  style?: string
+}
 
-const Icon = ({ name, size, color, hover, onClick, style }: Props) => {
-  const [iconName, setIconName] = useState(name);
+function Icon({ name, size, color, hover, onClick, style }: Props) {
+  const [iconName, setIconName] = useState(name)
 
   return (
     <img
       src={`https://icongr.am/entypo/${iconName}.svg?size=${size}&color=${color}`}
       onMouseOver={() => {
-        hover && setIconName(name.replace("-outlined", ""));
+        hover && setIconName(name.replace('-outlined', ''))
       }}
       onMouseOut={() => {
-        hover && setIconName(name);
+        hover && setIconName(name)
       }}
       onClick={onClick}
-      alt="Imagen"
+      alt='Imagen'
       className={style}
     />
-  );
-};
+  )
+}
 
 Icon.defaultProps = {
   size: 24,
-  color: "D9BDAB",
-  name: "home",
+  color: 'D9BDAB',
+  name: 'home',
   hover: false,
-  style: "",
+  style: '',
   onClick: () => {},
-};
+}
 
-export default Icon;
+export default Icon

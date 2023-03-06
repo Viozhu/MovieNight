@@ -1,17 +1,17 @@
-import React from 'react';
-import * as styles from './styles';
-import { Icon } from '@styleComponents';
-import { Movie } from '@graphqlTypes';
+import React from 'react'
+import { Icon } from '@styleComponents'
+import { Movie } from '@graphqlTypes'
+import * as styles from './styles'
 
 type Props = {
-  data: Array<Movie>;
-};
+  data: Array<Movie>
+}
 
-const Banner = ({ data }: Props) => {
+function Banner({ data }: Props) {
   const scrollSmooth = (id: string) => {
-    const element = document.getElementById(id);
-    element?.scrollIntoView({ behavior: 'smooth' });
-  };
+    const element = document.getElementById(id)
+    element?.scrollIntoView({ behavior: 'smooth' })
+  }
   return (
     <div className={styles.BANNER_CONTAINER}>
       <div className={styles.TEXT_CONTAINER}>
@@ -20,10 +20,10 @@ const Banner = ({ data }: Props) => {
         <div className={styles.CARDS_BANNER}>
           {data?.slice(0, 5).map((item) => (
             <img
-              key={item.id + 'banner'}
-              className="object-cover h-full rounded"
-              src={'https://image.tmdb.org/t/p/w185' + item.poster_path}
-              alt="image"
+              key={`${item.id}banner`}
+              className='object-cover h-full rounded'
+              src={`https://image.tmdb.org/t/p/w185${item.poster_path}`}
+              alt='image'
               width={200}
             />
           ))}
@@ -31,12 +31,12 @@ const Banner = ({ data }: Props) => {
       </div>
       <div className={styles.BUTTON_CONTAINER}>
         <button className={styles.BUTTON} onClick={() => scrollSmooth('conte')}>
-          <Icon name="arrow-down" />
+          <Icon name='arrow-down' />
         </button>
       </div>
-      <div id="conte" />
+      <div id='conte' />
     </div>
-  );
-};
+  )
+}
 
-export default Banner;
+export default Banner

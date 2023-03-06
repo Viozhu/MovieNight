@@ -1,113 +1,94 @@
-import { Movie } from '@graphqlTypes';
-import StartRating from './StarRating';
-import { useState } from 'react';
-import dayjs from 'dayjs';
-import { addFavMovie, removeFavMovie } from '@reduxSlicesFav';
-import { addWishMovie, removeWishMovie } from '@reduxSlicesWish';
-import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from 'src/Redux';
-import { Dispatch } from '@reduxjs/toolkit';
-import UseSimilarMovies from './useGetSimilarMovies';
-import * as styles from './styles';
-import Icon from '../Icon';
+import { Movie } from '@graphqlTypes'
+import { useState } from 'react'
+import dayjs from 'dayjs'
+import { addFavMovie, removeFavMovie } from '@reduxSlicesFav'
+import { addWishMovie, removeWishMovie } from '@reduxSlicesWish'
+import { useDispatch, useSelector } from 'react-redux'
+import { RootState } from 'src/Redux'
+import { Dispatch } from '@reduxjs/toolkit'
+import StartRating from './StarRating'
+import UseSimilarMovies from './useGetSimilarMovies'
+import * as styles from './styles'
+import Icon from '../Icon'
 
 type Props = {
-  item: Movie;
-};
+  item: Movie
+}
 
-const CardModal = ({ item }: Props) => {
-  const [currentItem, setcurrentItem] = useState<Movie | any>(item);
+function CardModal({ item }: Props) {
+  const [currentItem, setcurrentItem] = useState<Movie | any>(item)
 
-  const {
-    id,
-    overview,
-    poster_path,
-    release_date,
-    title,
-    vote_average,
-    runtime,
-    genres,
-  } = currentItem;
+  const { id, overview, poster_path, release_date, title, vote_average, runtime, genres } =
+    currentItem
 
   const { status, data } = UseSimilarMovies({
     variables: {
-      id: id,
+      id,
     },
     enabled: !!id,
-  });
+  })
 
-  const movies: Array<Movie> = useSelector(
-    (state: RootState) => state.counter.value,
-  );
-  const wish: Array<Movie> = useSelector(
-    (state: RootState) => state.wishlist.value,
-  );
+  const movies: Array<Movie> = useSelector((state: RootState) => state.counter.value)
+  const wish: Array<Movie> = useSelector((state: RootState) => state.wishlist.value)
 
-  const dispatch: Dispatch = useDispatch();
+  const dispatch: Dispatch = useDispatch()
 
-  const haveFavMovie: Movie = movies.find((movie) => movie.id === id);
-  const haveWishMovie: Movie = wish.find((movie) => movie.id === id);
+  const haveFavMovie: Movie = movies.find((movie) => movie.id === id)
+  const haveWishMovie: Movie = wish.find((movie) => movie.id === id)
 
   const handleAddOrRemoveFavMovie = (): void => {
     if (haveFavMovie) {
-      dispatch(removeFavMovie(currentItem));
+      dispatch(removeFavMovie(currentItem))
     } else {
-      dispatch(addFavMovie(currentItem));
+      dispatch(addFavMovie(currentItem))
     }
-  };
+  }
 
   const handleAddOrRemoveWishMovie = (): void => {
     if (haveWishMovie) {
-      dispatch(removeWishMovie(currentItem));
+      dispatch(removeWishMovie(currentItem))
     } else {
-      dispatch(addWishMovie(currentItem));
+      dispatch(addWishMovie(currentItem))
     }
-  };
+  }
 
   const sliceController = (direction: string) => {
-    const contenedor = document.getElementById(`sliceContenedorRelated`);
-    const scrollOffset = 600;
+    const contenedor = document.getElementById('sliceContenedorRelated')
+    const scrollOffset = 600
 
     if (direction === 'left') {
       contenedor.scrollTo({
         left: contenedor.scrollLeft - scrollOffset,
         behavior: 'smooth',
-      });
+      })
     } else {
       contenedor.scrollTo({
         left: contenedor.scrollLeft + scrollOffset,
         behavior: 'smooth',
-      });
+      })
     }
-  };
+  }
 
-  const isMobile: boolean = window.innerWidth < 768;
+  const isMobile: boolean = window.innerWidth < 768
 
   return (
     <div className={styles.CONTAINER}>
       <div className={styles.IMG_CONTAINER}>
         <img
-          src={
-            `https://image.tmdb.org/t/p/w${isMobile ? 185 : 400}` + poster_path
-          }
+          src={`https://image.tmdb.org/t/p/w${isMobile ? 185 : 400}${poster_path}`}
           alt={title}
-          className="rounded "
+          className='rounded '
         />
       </div>
       <div className={styles.DESCRIPTION_CONTAINER}>
         <div className={styles.TITLE_STAR}>
-          <h1 className="text-4xl">{title}</h1>
+          <h1 className='text-4xl'>{title}</h1>
           <StartRating vote={vote_average} />
         </div>
-        <p>{`${dayjs(release_date).format('DD/MM/YYYY')} | ${
-          runtime ?? '0'
-        } hs`}</p>
+        <p>{`${dayjs(release_date).format('DD/MM/YYYY')} | ${runtime ?? '0'} hs`}</p>
         <p>{overview}</p>
         <div className={styles.BUTTON_CONTAINER}>
-          <button
-            className={styles.BUTTON}
-            onClick={handleAddOrRemoveWishMovie}
-          >
+          <button className={styles.BUTTON} onClick={handleAddOrRemoveWishMovie}>
             {haveWishMovie ? 'Remove' : 'Add'} to watchlist
           </button>
           <button className={styles.BUTTON} onClick={handleAddOrRemoveFavMovie}>
@@ -120,35 +101,30 @@ const CardModal = ({ item }: Props) => {
             {data?.similarMovies?.length > 0 ? (
               <div className={styles.ARROW_CONTAINER}>
                 <Icon
-                  name="chevron-thin-left"
-                  color="8B7C6E"
+                  name='chevron-thin-left'
+                  color='8B7C6E'
                   onClick={() => sliceController('left')}
                   style={styles.ARROW}
                 />
-                <div
-                  className={styles.RELATED_MOVIES}
-                  id={`sliceContenedorRelated`}
-                >
+                <div className={styles.RELATED_MOVIES} id='sliceContenedorRelated'>
                   {data?.similarMovies.map((movie) => (
                     <div
                       className={styles.RELATED_MOVIE}
-                      key={item.id + 'similar'}
+                      key={`${item.id}similar`}
                       onClick={() => setcurrentItem(movie)}
                     >
                       <img
-                        src={
-                          'https://image.tmdb.org/t/p/w92' + movie.poster_path
-                        }
+                        src={`https://image.tmdb.org/t/p/w92${movie.poster_path}`}
                         alt={movie.title}
-                        className="rounded"
+                        className='rounded'
                       />
                       <p className={styles.RELATED_MOVIE_TEXT}>{movie.title}</p>
                     </div>
                   ))}
                 </div>
                 <Icon
-                  name="chevron-thin-right"
-                  color="8B7C6E"
+                  name='chevron-thin-right'
+                  color='8B7C6E'
                   onClick={() => sliceController('right')}
                   style={styles.ARROW}
                 />
@@ -160,7 +136,7 @@ const CardModal = ({ item }: Props) => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default CardModal;
+export default CardModal

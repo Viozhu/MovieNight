@@ -1,26 +1,18 @@
-import React from 'react';
-import * as styles from './styles';
-type Props = {
-  label?: string;
-  placeholder?: string;
-  requeired?: boolean;
-  type?: string;
-  id?: string;
-  onChange: (string) => void;
-  onKeyPress?: () => void;
-  value?: string;
-};
+import React from 'react'
+import * as styles from './styles'
 
-const Input = ({
-  label,
-  placeholder,
-  requeired,
-  type,
-  id,
-  onChange,
-  onKeyPress,
-  value,
-}: Props) => {
+type Props = {
+  label?: string
+  placeholder?: string
+  requeired?: boolean
+  type?: string
+  id?: string
+  onChange: (string) => void
+  onKeyPress?: () => void
+  value?: string
+}
+
+function Input({ label, placeholder, requeired, type, id, onChange, onKeyPress, value }: Props) {
   return (
     <div>
       {!!label && <label className={styles.LABEL}>{label}</label>}
@@ -34,13 +26,13 @@ const Input = ({
         value={value}
         onKeyPress={(e) => {
           if (e.key === 'Enter') {
-            onKeyPress();
+            onKeyPress()
           }
         }}
       />
     </div>
-  );
-};
+  )
+}
 
 Input.defaultProps = {
   type: 'text',
@@ -49,6 +41,6 @@ Input.defaultProps = {
   required: false,
   label: '',
   onKeyPress: () => {},
-};
+}
 
-export default Input;
+export default Input

@@ -1,2 +1,2 @@
-export * from './useGenerateMutation';
-export * from './useGenerateQuery';
+export * from './useGenerateMutation'
+export * from './useGenerateQuery'

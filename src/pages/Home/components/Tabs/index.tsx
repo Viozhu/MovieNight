@@ -1,21 +1,21 @@
-import { Movie } from '@graphqlTypes';
-import { useState } from 'react';
-import { Icon, Modal, CardModal } from '@styleComponents';
-import Card from '../Card';
-import * as styles from './styles';
+import { Movie } from '@graphqlTypes'
+import { useState } from 'react'
+import { Icon, Modal, CardModal } from '@styleComponents'
+import Card from '../Card'
+import * as styles from './styles'
 
 type Props = {
-  data: Array<Movie>;
-  status: string;
-  title: string;
-  subTitle: string;
-  id: string;
-};
+  data: Array<Movie>
+  status: string
+  title: string
+  subTitle: string
+  id: string
+}
 
-const Tabs = ({ data, status, title, subTitle, id }: Props) => {
+function Tabs({ data, status, title, subTitle, id }: Props) {
   const [currentItem, setCurrentItem] = useState<{
-    item: Movie;
-    show: boolean;
+    item: Movie
+    show: boolean
   }>({
     item: {
       id: 0,
@@ -26,24 +26,24 @@ const Tabs = ({ data, status, title, subTitle, id }: Props) => {
       overview: '',
     },
     show: false,
-  });
+  })
 
   const sliceController = (direction: string) => {
-    const contenedor = document.getElementById(`sliceContenedor + ${id}`);
-    const scrollOffset = 600;
+    const contenedor = document.getElementById(`sliceContenedor + ${id}`)
+    const scrollOffset = 600
 
     if (direction === 'left') {
       contenedor.scrollTo({
         left: contenedor.scrollLeft - scrollOffset,
         behavior: 'smooth',
-      });
+      })
     } else {
       contenedor.scrollTo({
         left: contenedor.scrollLeft + scrollOffset,
         behavior: 'smooth',
-      });
+      })
     }
-  };
+  }
   return (
     <>
       <div className={styles.CONTAINER}>
@@ -55,15 +55,12 @@ const Tabs = ({ data, status, title, subTitle, id }: Props) => {
           {data.length > 0 ? (
             <div className={styles.ARROW_CONTAINER}>
               <Icon
-                name="chevron-thin-left"
-                color="ffffff"
+                name='chevron-thin-left'
+                color='ffffff'
                 onClick={() => sliceController('left')}
                 style={styles.ARROW}
               />
-              <div
-                className={styles.CARD_CONTAINER}
-                id={`sliceContenedor + ${id}`}
-              >
+              <div className={styles.CARD_CONTAINER} id={`sliceContenedor + ${id}`}>
                 {data.map((item) => (
                   <Card
                     key={item.id}
@@ -73,8 +70,8 @@ const Tabs = ({ data, status, title, subTitle, id }: Props) => {
                 ))}
               </div>
               <Icon
-                name="chevron-thin-right"
-                color="ffffff"
+                name='chevron-thin-right'
+                color='ffffff'
                 onClick={() => sliceController('right')}
                 style={styles.ARROW}
               />
@@ -101,14 +98,14 @@ const Tabs = ({ data, status, title, subTitle, id }: Props) => {
                 overview: '',
               },
               show: false,
-            });
+            })
           }}
         >
           <CardModal item={currentItem.item} />
         </Modal>
       )}
     </>
-  );
-};
+  )
+}
 
-export default Tabs;
+export default Tabs

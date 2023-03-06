@@ -1,1 +1,1 @@
-export const BANNER_IMG = 'w-screen object-fit h-[92vh]';
+export const BANNER_IMG = 'w-screen object-fit h-[92vh]'
