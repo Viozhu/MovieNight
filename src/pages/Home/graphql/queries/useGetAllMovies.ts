@@ -9,7 +9,7 @@ type UseGetAllMoviesReturn = {
   refetch: () => void
 }
 
-const UseGetAllMovies = (props): UseGetAllMoviesReturn => {
+const UseGetAllMovies = (): UseGetAllMoviesReturn => {
   const endpoint = API_URL
 
   const { status, data, error, refetch } = useGeneratedQuery<

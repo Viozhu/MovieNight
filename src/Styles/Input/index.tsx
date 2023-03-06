@@ -40,7 +40,9 @@ Input.defaultProps = {
   placeholder: 'Input',
   required: false,
   label: '',
-  onKeyPress: () => {},
+  onKeyPress: () => {
+    console.log('test')
+  },
 }
 
 export default Input

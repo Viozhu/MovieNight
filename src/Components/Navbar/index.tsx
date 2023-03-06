@@ -1,12 +1,12 @@
 import { Icon, Input, Modal } from '@styleComponents'
-import { useState, useEffect } from 'react'
-import * as styles from './styles'
+import { useState } from 'react'
 import Logo from '../../assets/logo.png'
-import './styles.css'
-import { Info, FavoritesMenu, WishListMenu } from './subsections'
 import UseSearchMovie from './graphql/queries/useSearchMovie'
 import SearchModal from './SearchModal'
+import * as styles from './styles'
+import './styles.css'
 import SubSection from './SubSection'
+import { FavoritesMenu, Info, WishListMenu } from './subsections'
 
 type subSectionsTypes = {
   title: string | JSX.Element
@@ -29,7 +29,7 @@ export function NavBar(): JSX.Element {
     setTimeout(() => setSearchModal(true), 500)
   }
 
-  const { data, status, error, refetch } = UseSearchMovie({
+  const { data, status } = UseSearchMovie({
     variables: { term: searchTerm },
     enabled: searchModal && searchTerm.length > 2,
   })

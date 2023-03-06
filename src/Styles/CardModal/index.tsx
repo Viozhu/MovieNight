@@ -18,10 +18,9 @@ type Props = {
 function CardModal({ item }: Props) {
   const [currentItem, setcurrentItem] = useState<Movie | any>(item)
 
-  const { id, overview, poster_path, release_date, title, vote_average, runtime, genres } =
-    currentItem
+  const { id, overview, poster_path, release_date, title, vote_average, runtime } = currentItem
 
-  const { status, data } = UseSimilarMovies({
+  const { data } = UseSimilarMovies({
     variables: {
       id,
     },

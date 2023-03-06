@@ -1,8 +1,6 @@
 import React from 'react'
 
-type Props = {}
-
-export function Info(props: Props) {
+export function Info() {
   return (
     <div className='w-full flex flex-wrap justify-between mx-2 '>
       <div className='w-full text-white mb-8'>

@@ -21,7 +21,7 @@ function Icon({ name, size, color, hover, onClick, style }: Props) {
       onMouseOut={() => {
         hover && setIconName(name)
       }}
-      onClick={onClick}
+      onClick={() => onClick()}
       alt='Imagen'
       className={style}
     />
@@ -34,7 +34,9 @@ Icon.defaultProps = {
   name: 'home',
   hover: false,
   style: '',
-  onClick: () => {},
+  onClick: () => {
+    console.log('test')
+  },
 }
 
 export default Icon
