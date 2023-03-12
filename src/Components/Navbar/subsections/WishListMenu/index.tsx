@@ -7,12 +7,8 @@ import '../../styles.css';
 import * as styles from './styles';
 import { Dispatch } from '@reduxjs/toolkit';
 
-type Props = {};
-
 const WishListMenu = (): JSX.Element => {
-  const wish: Array<Movie> = useSelector(
-    (state: RootState) => state.wishlist.value,
-  );
+  const wish: Movie[] = useSelector((state: RootState) => state.wishlist.value);
 
   const dispatch: Dispatch = useDispatch();
 

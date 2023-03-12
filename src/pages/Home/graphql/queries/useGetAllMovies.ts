@@ -6,12 +6,12 @@ import {
   GetAllMoviesQueryVariables,
 } from '@graphqlTypes';
 
-type UseGetAllMoviesReturn = {
+interface UseGetAllMoviesReturn {
   status: 'loading' | 'error' | 'success' | 'idle';
   data: GetAllMoviesQuery | undefined;
   error: Error | undefined | {};
   refetch: () => void;
-};
+}
 
 const UseGetAllMovies = (props): UseGetAllMoviesReturn => {
   const endpoint = API_URL;

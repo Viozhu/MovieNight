@@ -2,7 +2,10 @@ import { Movie } from '@graphqlTypes';
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import * as styles from './styles';
-type Props = { item: Movie; onClick: () => void };
+interface Props {
+  item: Movie;
+  onClick: () => void;
+}
 
 const Card = ({ item, onClick }: Props) => {
   return (

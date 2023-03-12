@@ -32,8 +32,6 @@ export const useGeneratedMutation = <TMutation, TVariables, TError, TContext>(
       } catch (error) {
         alert(error);
       }
-
-      return;
     },
     options,
   );

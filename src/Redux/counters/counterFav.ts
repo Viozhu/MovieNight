@@ -3,7 +3,7 @@ import type { PayloadAction } from '@reduxjs/toolkit';
 import { Movie } from '@graphqlTypes';
 
 export interface CounterState {
-  value: Array<Movie>;
+  value: Movie[];
 }
 
 const initialState: CounterState = {

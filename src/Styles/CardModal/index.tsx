@@ -11,9 +11,9 @@ import UseSimilarMovies from './useGetSimilarMovies';
 import * as styles from './styles';
 import Icon from '../Icon';
 
-type Props = {
+interface Props {
   item: Movie;
-};
+}
 
 const CardModal = ({ item }: Props) => {
   const [currentItem, setcurrentItem] = useState<Movie | any>(item);
@@ -31,17 +31,15 @@ const CardModal = ({ item }: Props) => {
 
   const { status, data } = UseSimilarMovies({
     variables: {
-      id: id,
+      id,
     },
     enabled: !!id,
   });
 
-  const movies: Array<Movie> = useSelector(
+  const movies: Movie[] = useSelector(
     (state: RootState) => state.counter.value,
   );
-  const wish: Array<Movie> = useSelector(
-    (state: RootState) => state.wishlist.value,
-  );
+  const wish: Movie[] = useSelector((state: RootState) => state.wishlist.value);
 
   const dispatch: Dispatch = useDispatch();
 
@@ -65,7 +63,7 @@ const CardModal = ({ item }: Props) => {
   };
 
   const sliceController = (direction: string) => {
-    const contenedor = document.getElementById(`sliceContenedorRelated`);
+    const contenedor = document.getElementById('sliceContenedorRelated');
     const scrollOffset = 600;
 
     if (direction === 'left') {
@@ -99,9 +97,9 @@ const CardModal = ({ item }: Props) => {
           <h1 className="text-4xl">{title}</h1>
           <StartRating vote={vote_average} />
         </div>
-        <p>{`${dayjs(release_date).format('DD/MM/YYYY')} | ${
-          runtime ?? '0'
-        } hs`}</p>
+        <p>
+          {`${dayjs(release_date).format('DD/MM/YYYY')} | ${runtime ?? '0'} hs`}
+        </p>
         <p>{overview}</p>
         <div className={styles.BUTTON_CONTAINER}>
           <button
@@ -127,7 +125,7 @@ const CardModal = ({ item }: Props) => {
                 />
                 <div
                   className={styles.RELATED_MOVIES}
-                  id={`sliceContenedorRelated`}
+                  id="sliceContenedorRelated"
                 >
                   {data?.similarMovies.map((movie) => (
                     <div

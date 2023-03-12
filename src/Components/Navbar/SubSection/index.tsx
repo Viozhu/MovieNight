@@ -2,11 +2,11 @@ import { useState } from 'react';
 import * as styles from './styles';
 import '../styles.css';
 
-type subSectionsTypes = {
+interface subSectionsTypes {
   title: string | JSX.Element;
   content: JSX.Element;
   index?: number;
-};
+}
 
 const SubSection = ({
   title,
@@ -27,7 +27,7 @@ const SubSection = ({
         className={styles.A_TAG}
         onClick={() => {
           setShowSubSection({
-            show: showSubSection.show ? false : true,
+            show: !showSubSection.show,
             index: showSubSection.index === index ? -1 : index,
           });
         }}

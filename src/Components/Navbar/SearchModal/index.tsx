@@ -2,10 +2,10 @@ import { Movie, SearchMovieQuery } from '@graphqlTypes';
 import { CardModal } from '@styleComponents';
 
 import { useState } from 'react';
-type Props = {
-  data: Array<Movie> | Array<SearchMovieQuery['searchMovie']> | any;
-};
 import * as styles from './styles';
+interface Props {
+  data: Movie[] | Array<SearchMovieQuery['searchMovie']> | any;
+}
 
 const SearchModal = ({ data }: Props) => {
   const [currentItem, setCurrentItem] = useState<{
@@ -34,7 +34,7 @@ const SearchModal = ({ data }: Props) => {
                 <div
                   key={item.id + index}
                   className={styles.CARD_CONTAINER}
-                  onClick={() => setCurrentItem({ item: item, show: true })}
+                  onClick={() => setCurrentItem({ item, show: true })}
                 >
                   <img
                     src={'https://image.tmdb.org/t/p/w92' + item.poster_path}
