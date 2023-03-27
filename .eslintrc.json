@@ -13,5 +13,9 @@
     ]
   },
   "plugins": ["prettier"],
-  "ignorePatterns": ["src/apollo/generated/graphql.ts, ", "src/Redux/store.ts"]
+  "ignorePatterns": [
+    "src/apollo/generated/graphql.ts, ",
+    "src/Redux/store.ts",
+    "/commitlint.config.js"
+  ]
 }
