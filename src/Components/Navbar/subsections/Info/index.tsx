@@ -8,7 +8,7 @@ export const Info = (props: Props) => {
       <div className="w-full text-white mb-8">
         <h2 className="font-bold text-2xl">Movies Night</h2>
         <p>
-          This project was created for the technical challenge of Rather Labs
+          This project was created for the technical challenge
         </p>
       </div>
       <div className="flex flex-col md:flex-row justify-center items-center w-full">
