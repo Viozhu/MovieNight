@@ -3,7 +3,7 @@
   <h3 align="center">Movie Night</h3>
 
   <p align="center">
-    This project was created for the technical challenge of Rather Labs
+    This project was created for the technical challenge
     <br/>
     <br/>
     <a href="https://movie-night-flame.vercel.app/" target="_blank">View Demo</a>
@@ -29,7 +29,7 @@
 ![image](https://user-images.githubusercontent.com/76756295/220177467-73a369a5-66ce-44f3-90b7-a255d021a2af.png)
 
 
-This project was created for the technical challenge of Rather Labs
+This project was created for the technical challenge
 
 ## Built With
 <div style="display:flex; justify-content: center;">
