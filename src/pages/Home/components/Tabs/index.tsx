@@ -52,7 +52,7 @@ const Tabs = ({ data, status, title, subTitle, id }: Props) => {
       </div>
       {status === 'success' && (
         <div className={styles.TAB_CONTAINER}>
-          {data.length > 0 ? (
+          {data && data.length > 0 ? (
             <div className={styles.ARROW_CONTAINER}>
               <Icon
                 name="chevron-thin-left"

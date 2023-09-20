@@ -5,5 +5,6 @@ export const router = createBrowserRouter([
   {
     path: '/',
     element: <Home />,
+    errorElement: <p>No found</p>,
   },
 ]);
