@@ -4,13 +4,13 @@ import { Icon, Modal, CardModal } from '@styleComponents';
 import Card from '../Card';
 import * as styles from './styles';
 
-type Props = {
-  data: Array<Movie>;
+interface Props {
+  data: Movie[];
   status: string;
   title: string;
   subTitle: string;
   id: string;
-};
+}
 
 const Tabs = ({ data, status, title, subTitle, id }: Props) => {
   const [currentItem, setCurrentItem] = useState<{
@@ -52,7 +52,7 @@ const Tabs = ({ data, status, title, subTitle, id }: Props) => {
       </div>
       {status === 'success' && (
         <div className={styles.TAB_CONTAINER}>
-          {data.length > 0 ? (
+          {data && data.length > 0 ? (
             <div className={styles.ARROW_CONTAINER}>
               <Icon
                 name="chevron-thin-left"

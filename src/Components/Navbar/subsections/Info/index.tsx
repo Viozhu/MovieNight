@@ -1,8 +1,6 @@
 import React from 'react';
 
-type Props = {};
-
-export const Info = (props: Props) => {
+export const Info = () => {
   return (
     <div className="w-full flex flex-wrap justify-between mx-2 ">
       <div className="w-full text-white mb-8">
@@ -44,7 +42,8 @@ export const Info = (props: Props) => {
             <a
               href="https://www.linkedin.com/in/jorgeignaciogaray/"
               className="text-white bold border-b-2 border-blue-300 hover:text-blue-300"
-              target={'_blank'}
+              target="_blank"
+              rel="noreferrer"
             >
               Find out more...
             </a>

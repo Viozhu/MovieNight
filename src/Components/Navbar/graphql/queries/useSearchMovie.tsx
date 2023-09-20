@@ -6,12 +6,12 @@ import {
   SearchMovieQueryVariables,
 } from '@graphqlTypes';
 
-type UseSearchMovieReturn = {
+interface UseSearchMovieReturn {
   status: 'loading' | 'error' | 'success' | 'idle';
   data: SearchMovieQuery | undefined;
   error: Error | undefined | {};
   refetch: () => void;
-};
+}
 
 const UseSearchMovie = ({ variables, enabled }): UseSearchMovieReturn => {
   const endpoint = API_URL;

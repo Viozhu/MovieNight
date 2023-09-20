@@ -1,13 +1,13 @@
 import Icon from '../Icon';
 import * as styles from './styles';
 
-type Props = {
+interface Props {
   visible: boolean;
   onClose: () => void;
   children: JSX.Element;
   title?: string;
   size?: 'sm' | 'lg';
-};
+}
 
 const Modal = ({ visible, onClose, children, title, size = 'lg' }: Props) => {
   return (

@@ -1,4 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
+
 import counterSlice from './counters/counterFav';
 import counterWishlist from './counters/counterWishlist';
 

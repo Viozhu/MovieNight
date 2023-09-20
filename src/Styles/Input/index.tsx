@@ -1,6 +1,6 @@
-import React from 'react';
 import * as styles from './styles';
-type Props = {
+
+interface Props {
   label?: string;
   placeholder?: string;
   requeired?: boolean;
@@ -9,9 +9,9 @@ type Props = {
   onChange: (string) => void;
   onKeyPress?: () => void;
   value?: string;
-};
+}
 
-const Input = ({
+function Input({
   label,
   placeholder,
   requeired,
@@ -20,7 +20,7 @@ const Input = ({
   onChange,
   onKeyPress,
   value,
-}: Props) => {
+}: Props) {
   return (
     <div>
       {!!label && <label className={styles.LABEL}>{label}</label>}
@@ -40,7 +40,7 @@ const Input = ({
       />
     </div>
   );
-};
+}
 
 Input.defaultProps = {
   type: 'text',

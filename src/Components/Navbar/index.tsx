@@ -8,11 +8,11 @@ import UseSearchMovie from './graphql/queries/useSearchMovie';
 import SearchModal from './SearchModal';
 import SubSection from './SubSection';
 
-type subSectionsTypes = {
+interface subSectionsTypes {
   title: string | JSX.Element;
   content: JSX.Element;
   index?: number;
-};
+}
 
 export const NavBar = (): JSX.Element => {
   const [searchTerm, setSearchTerm] = useState<string>('');
@@ -34,7 +34,7 @@ export const NavBar = (): JSX.Element => {
     enabled: searchModal && searchTerm.length > 2,
   });
 
-  const subSections: Array<subSectionsTypes> = [
+  const subSections: subSectionsTypes[] = [
     {
       title: <Icon name="heart-outlined" size={24} color="8B7C6E" hover />,
       content: <FavoritesMenu />,

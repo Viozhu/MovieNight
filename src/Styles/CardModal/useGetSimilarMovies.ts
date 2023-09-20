@@ -6,12 +6,12 @@ import {
   SimilarMoviesQueryVariables,
 } from '@graphqlTypes';
 
-type UseSimilarMoviesReturn = {
+interface UseSimilarMoviesReturn {
   status: 'loading' | 'error' | 'success' | 'idle';
   data: SimilarMoviesQuery | undefined;
   error: Error | undefined | {};
   refetch: () => void;
-};
+}
 
 const UseSimilarMovies = ({ variables, enabled }): UseSimilarMoviesReturn => {
   const endpoint = API_URL;

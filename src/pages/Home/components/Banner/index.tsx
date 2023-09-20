@@ -3,9 +3,9 @@ import * as styles from './styles';
 import { Icon } from '@styleComponents';
 import { Movie } from '@graphqlTypes';
 
-type Props = {
-  data: Array<Movie>;
-};
+interface Props {
+  data: Movie[];
+}
 
 const Banner = ({ data }: Props) => {
   const scrollSmooth = (id: string) => {
