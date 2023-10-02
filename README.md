@@ -4,7 +4,7 @@
 
   <p align="center">
     This project was created for the technical challenge
-    <br/>
+   
     <br/>
     <a href="https://movie-night-flame.vercel.app/" target="_blank">View Demo</a>
     .
